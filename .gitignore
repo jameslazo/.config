@@ -1,0 +1,9 @@
+#\\\\\\\\\\\\#
+#\GIT\IGNORE\#
+#\\\\\\\\\\\\#
+*
+!nano*
+!bash*
+!.gitignore
+!README.md
+
