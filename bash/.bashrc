@@ -63,7 +63,7 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 HISTSIZE=20000
 HISTFILESIZE=200000
-HISTFILE=/home/james/.config/bash/.bash_history
+HISTFILE=$HOME/.config/bash/.bash_history
 PROMPT_COMMAND='history -a; history -n; history -r'
 #-------------------#
 
