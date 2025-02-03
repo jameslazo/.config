@@ -62,11 +62,12 @@ fi
 #\\\\\\\\\\\\\\\\\\\#
 #\\\\\\HISTORY\\\\\\#
 #\\\\\\\\\\\\\\\\\\\#
-HISTCONTROL=ignoreboth
+HISTCONTROL=ignoreboth:erasedups
 shopt -s histappend
 HISTSIZE=20000
 HISTFILESIZE=200000
 HISTFILE=$HOME/.config/bash/.bash_history
+HISTIGNORE='?:??:pwd:exit:clear:cd ~*:history:git*'
 PROMPT_COMMAND='history -a; history -n; history -r'
 #-------------------#
 
