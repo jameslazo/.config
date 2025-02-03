@@ -2,10 +2,10 @@
 #\GIT\IGNORE\#
 #\\\\\\\\\\\\#
 *
-!bash
+!*/
 !bash/*
-!nano
 !nano/*
+!tmux/*
 !.gitignore
 !README.md
 **/*~
