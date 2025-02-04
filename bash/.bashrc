@@ -29,6 +29,7 @@ alias sb='source ~/.config/bash/.bashrc && clear'
 alias dt='cd ~/.config'
 alias nb='nano $CF/bash/.bashrc'
 alias fz="fzf --reverse --preview 'less {}'"
+alias ta='tmux attach -t 1337'
 alias lS='ls -ShalF'
 alias lx='ls -XhalFr'
 alias lt='ls -thalF'
