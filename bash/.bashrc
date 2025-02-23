@@ -11,26 +11,22 @@ esac
 #\\\\\\\\\\\\\\\\\\\#
 #\\\\\\ENVVARS\\\\\\#
 #\\\\\\\\\\\\\\\\\\\#
+export CODE=$HOME/code
 export CF=$HOME/.config
 export FZF_DEFAULT_COMMAND='find . -type d \( -name .venv -o -name __pycache__ -o -name .git \) -prune -o -type f -print'
-export POSH_THEMES_PATH=$HOME/.cache/oh-my-posh/themes
-export CODE=$HOME/code
+# export POSH_THEMES_PATH=$HOME/.cache/oh-my-posh/themes
 #-------------------#
 
 
 #\\\\\\\\\\\\\\\\\\\#
 #\\\\\\ALIASES\\\\\\#
 #\\\\\\\\\\\\\\\\\\\#
-alias ds='docker stop $(docker ps -a --format "{{.ID}} {{.Image}} {{.Names}} {{.RunningFor}}" | fzf --reverse | awk  '"'"'{print $1}'"'"')'
 alias drm='docker rm $(docker ps --format "{{.ID}} {{.Image}} {{.Names}} {{.RunningFor}}" | fzf --reverse | awk  '"'"'{print $1}'"'"')'
 alias drmi='docker rmi $(docker images --format "{{.ID}} {{.Repository}} {{.Tag}} {{.CreatedSince}}" | fzf --reverse | awk '"'"'{print $1}'"'"')'
+alias ds='docker stop $(docker ps -a --format "{{.ID}} {{.Image}} {{.Names}} {{.RunningFor}}" | fzf --reverse | awk  '"'"'{print $1}'"'"')'
 alias dsci='c=$docker ps | fzf --reverse; [ -n "$c" ] && docker stop "$c" && docker rm "$c"; i=$(docker images | fzf --reverse); [ -n "$i" ] && docker rmi $"i"'
-alias sb='source ~/.config/bash/.bashrc && clear'
 alias dt='cd ~/.config'
-alias nb='nano $CF/bash/.bashrc'
-alias nn='nano $CF/nano/nanorc'
 alias fz="fzf --reverse --preview 'less {}'"
-alias ta='tmux attach -t 1337'
 alias lS='ls -ShalF'
 alias lx='ls -XhalFr'
 alias lt='ls -thalF'
@@ -38,12 +34,16 @@ alias lr='ls -thalFr'
 alias ll='ls -halF'
 alias la='ls -Ah'
 alias l='ls -CFh'
+alias nb='nano $CF/bash/.bashrc'
+alias nn='nano $CF/nano/nanorc'
+alias sb='source ~/.config/bash/.bashrc && clear'
+alias ta='tmux attach -t 1337'
 alias vs='code tunnel --disable-telemetry'
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
+    #alias ls='ls --color=auto'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
@@ -92,6 +92,22 @@ if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
+# enable programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
+#-------------------#
+
+
+#\\\\\\\\\\\\#
+#\\\COLORS\\\#
+#\\\\\\\\\\\\#
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
     xterm-color|*-256color) color_prompt=yes;;
@@ -113,12 +129,27 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+LS_COLORS="rs=38;5;223:di=01;38;5;202:ex=38;5;156:ln=38;5;68:*.bak=38;5;130:*~=38;5;130:*.conf=38;5;89:"
+
+function parse_git {
+    local branch
+    if branch=$(git symbolic-ref --short -q HEAD 2>/dev/null); then
+        local status=""
+        if [[ -n $(git status --porcelain 2>/dev/null) ]]; then
+            status="*"  # Indicates uncommitted changes
+        fi
+        echo "::${branch}${status}"
+    fi
+}
+# PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[oom\]:\[\033[01;34m\]\w\[\033[01;34m\]$(parse_git)\[\033[00m\]\$ '
+
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[38;5;214m\]\u@\h\[\033[38;5;214m\]:\[\033[38;5;202m\]\w\[\033[38;5;37m\]$(parse_git)\[\033[38;5;223m\]\$ '
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$(parse_git)\$ '
 fi
-unset color_prompt force_color_prompt
+
+#unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
@@ -131,18 +162,7 @@ esac
 
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
-if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
-fi
-#-------------------#
+#------------#
 
 
 #\\\\\\\\\\\\\\\\\\\#
@@ -151,5 +171,6 @@ fi
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 eval "$(fzf --bash)"
-eval "$(oh-my-posh init bash --config $POSH_THEMES_PATH/cobalt2.omp.json)"
+#eval "$(oh-my-posh init bash --config $POSH_THEMES_PATH/cobalt2.omp.json)"
 #-------------------#
+
