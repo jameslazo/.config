@@ -28,6 +28,7 @@ alias dsci='c=$docker ps | fzf --reverse; [ -n "$c" ] && docker stop "$c" && doc
 alias sb='source ~/.config/bash/.bashrc && clear'
 alias dt='cd ~/.config'
 alias nb='nano $CF/bash/.bashrc'
+alias nn='nano $CF/nano/nanorc'
 alias fz="fzf --reverse --preview 'less {}'"
 alias ta='tmux attach -t 1337'
 alias lS='ls -ShalF'
@@ -37,6 +38,7 @@ alias lr='ls -thalFr'
 alias ll='ls -halF'
 alias la='ls -Ah'
 alias l='ls -CFh'
+alias vs='code tunnel --disable-telemetry'
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
