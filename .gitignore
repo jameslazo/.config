@@ -3,7 +3,7 @@
 #\\\\\\\\\\\\#
 *
 !*/
-!.bashrc
+!bash/*
 !nanorc
 !tmux/*
 !.gitignore
