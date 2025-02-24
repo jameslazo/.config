@@ -24,21 +24,21 @@ fi
 
 # Git context
 function parse_git {
-    local branch
-    if branch=$(git symbolic-ref --short -q HEAD 2>/dev/null); then
-        local status=""
-        if [[ -n $(git status --porcelain 2>/dev/null) ]]; then
-            status="*"  # Indicates uncommitted changes
-        fi
-        echo "::${branch}${status}"
+  local branch
+  if branch=$(git symbolic-ref --short -q HEAD 2>/dev/null); then
+    local status=""
+    if [[ -n $(git status --porcelain 2>/dev/null) ]]; then
+      status="*"
     fi
+    echo -e "\033[38;5;202m:\033[38;5;37m${branch}${status}"
+  fi
 }
 
 # Colorized prompt w/Git context
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[38;5;214m\]\u@\h\[\033[38;5;214m\]:\[\033[38;5;202m\]\w\[\033[38;5;37m\]$(parse_git)\[\033[38;5;223m\]\$ '
+  PS1='${debian_chroot:+($debian_chroot)}\[\033[38;5;214m\]\u@\h\[\033[38;5;214m\]:\[\033[38;5;202m\]\w$(parse_git)\[\033[38;5;223m\]> '
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$(parse_git)\$ '
+  PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$(parse_git)\$ '
 fi
 
 # Colorize remaining terminal elements
