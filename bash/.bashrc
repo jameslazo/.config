@@ -18,22 +18,22 @@ shopt -s autocd
 #-------------------#
 
 #\\\\\\ALIASES\\\\\\#
-source $CFB/.balias.sh
+. $CFB/.balias.sh
 #-------------------#
 
 #\\\\\\HISTORY\\\\\\#
-source $CFB/.bhistory.sh
+. $CFB/.bhistory.sh
 #-------------------#
 
 #\\\MISCELLANEOUS\\\#
-source $CFB/.bmisc.sh
+. $CFB/.bmisc.sh
 #-------------------#
 
 #\\\\\\COLORS\\\\\\\#
-source $CFB/.bcolors.sh
+. $CFB/.bcolors.sh
 #-------------------#
 
-#\\\INTEGRATIONS\\\#
-source $CFB/.bintegrations.sh
-#------------------#
+#\\\\INTEGRATIONS\\\#
+. $CFB/.bintegrations.sh
+#---_---------------#
 
