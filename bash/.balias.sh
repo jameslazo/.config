@@ -3,6 +3,7 @@
 #\\\\\\\\\\\\\\\\\\\#
 alias ls='ls --color=auto'
 alias dt='cd ~/.config'
+alias dush='sudo du -h --max-depth=1'
 alias lS='ls -ShAlF'
 alias lx='ls -XhAlFr'
 alias lr='ls -hAlFR'
