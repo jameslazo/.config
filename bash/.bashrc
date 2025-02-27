@@ -21,6 +21,9 @@ shopt -s autocd
 . $CFB/.balias.sh
 #-------------------#
 
+#\\\\\FUNCTIONS\\\\\#
+. $CFB/.bfunctions.sh
+
 #\\\\\\HISTORY\\\\\\#
 . $CFB/.bhistory.sh
 #-------------------#

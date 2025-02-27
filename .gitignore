@@ -3,9 +3,14 @@
 #\\\\\\\\\\\\#
 *
 !*/
+
+# Whitelist
 !bash/*
 !nanorc
 !tmux/*
 !.gitignore
 !README.md
+
+# Blacklist
 **/*~
+**/*.bak
