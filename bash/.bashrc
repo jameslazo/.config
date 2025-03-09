@@ -38,5 +38,5 @@ shopt -s autocd
 
 #\\\\INTEGRATIONS\\\#
 . $CFB/.bintegrations.sh
-#---_---------------#
+#-------------------#
 
