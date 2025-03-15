@@ -1,0 +1,9 @@
+[color "status"]
+  changed = yellow bold
+  untracked = red bold
+  added = green bold
+  brach = cyan
+[color "diff"]
+  old = red bold
+  new = green bold
+  whitespace = red reverse
