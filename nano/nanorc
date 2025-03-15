@@ -157,7 +157,7 @@ set regexp
 ## will jump to that beginning (either forwards or backwards).  If the
 ## cursor is already at that position, it will jump to the true start
 ## of the line (the left edge).
-# set smarthome
+set smarthome
 
 ## Spread overlong lines over multiple screen lines.
 set softwrap
@@ -257,6 +257,8 @@ include "/usr/share/nano/*.nanorc"
 ## If <Tab> should always produce an actual TAB when editing a Makefile:
 extendsyntax makefile tabgives "	"
 
+## Custom git config syntax
+include "/home/james/.config/nano/gitrc"
 
 ## === Key bindings ===
 ## For all details, see 'man nanorc', section REBINDING KEYS.
