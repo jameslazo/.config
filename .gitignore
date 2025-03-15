@@ -6,7 +6,7 @@
 
 # Whitelist
 !bash/*
-!nanorc
+!nano/*
 !tmux/*
 !git/*
 !.gitignore

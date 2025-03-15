@@ -9,6 +9,7 @@ esac
 export CODE=$HOME/code
 export CF=$HOME/.config
 export CFB=$CF/bash
+export KUBE_EDITOR=/usr/bin/nano
 #-------------------#
 
 #\\\\\\OPTIONS\\\\\\#
