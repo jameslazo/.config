@@ -112,7 +112,7 @@ bash_theme() {
       ;;
   esac
   export PS1='${debian_chroot:+($debian_chroot)}\[\033[${fg}${login}m\]\u@\h\[\033[${fg}${login}m\]:\[\033[${fg}${directory}m\]\w$(parse_git)\[\033[${fg}${neutral}m\]> '
-  export LS_COLORS="rs=${fg}${neutral}:di=01;${fg}${directory}:ex=${fg}${execute}:ln=${fg}${link}:*.bak=${fg}${backup}:*~=${fg}${backup}:*.conf=${fg}${conf}:"
+  export LS_COLORS="rs=0:no=${fg}${neutral}:ow=${fg}${neutral}:di=01;${fg}${directory}:ex=${fg}${execute}:ln=${fg}${link}:*.bak=${fg}${backup}:*~=${fg}${backup}:*.conf=${fg}${conf}:"
 }
 
 
