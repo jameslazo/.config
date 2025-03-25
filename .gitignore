@@ -9,6 +9,7 @@
 !nano/*
 !tmux/*
 !git/*
+!qute*/*.yml
 !.gitignore
 !README.md
 
