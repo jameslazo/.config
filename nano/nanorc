@@ -258,7 +258,7 @@ include "/usr/share/nano/*.nanorc"
 extendsyntax makefile tabgives "	"
 
 ## Custom git config syntax
-include "/home/james/.config/nano/gitrc"
+include "/home/jazo/.config/nano/gitrc"
 
 ## === Key bindings ===
 ## For all details, see 'man nanorc', section REBINDING KEYS.

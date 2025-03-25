@@ -4,6 +4,8 @@
 alias ls='ls --color=auto'
 alias dt='cd ~/.config'
 alias dush='sudo du -h --max-depth=1'
+alias hex='hyprctl dispatch exit'
+alias hre='hyprctl reload'
 alias lS='ls -ShAlF'
 alias lx='ls -XhAlFr'
 alias lr='ls -hAlFR'

@@ -11,15 +11,12 @@
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
   if [ -f "$HOME/.config/bash/.bashrc" ]; then
-  "$HOME/.config/bash/.bashrc"
+  . "$HOME/.config/bash/.bashrc"
   # include .bashrc if it exists
   elif [ -f "$HOME/.bashrc" ]; then
-  "$HOME/.bashrc"
+  . "$HOME/.bashrc"
   fi
 fi
-
-
-
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
@@ -30,3 +27,7 @@ fi
 if [ -d "$HOME/.local/bin" ] ; then
   PATH="$HOME/.local/bin:$PATH"
 fi
+
+#if uwsm check may-start; then
+#  exec systemd-cat -t uwsm_start uwsm start defaultuwsm start hyprland.desktop
+#fi

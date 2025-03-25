@@ -16,4 +16,9 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+# start uwsm in arch
+if uwsm check may-start && uwsm select; then
+  exec uwsm start default
+fi
 #-------------------#
