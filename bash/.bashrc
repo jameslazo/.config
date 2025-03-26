@@ -11,6 +11,7 @@ export CF=$HOME/.config
 export CFB=$CF/bash
 export KUBE_EDITOR=/usr/bin/nano
 export LANG=C
+export SMB='/run/user/$UID/gvfs/smb-share:server=mojo.lan,share=glisamba'
 #-------------------#
 
 #\\\\\\OPTIONS\\\\\\#

@@ -7,7 +7,8 @@ ta() {
 }
 
 upk9s() {
-  wget https://github.com/derailed/k9s/releases/latest/download/k9s_linux_amd64.deb && sudo apt install ./k9s_linux_amd64.deb && rm k9s_linux_amd64.deb
+  stamp=$(date "+%y%m%d_%H%M%S")
+  mkdir -p /tmp/k9s/${stamp} && cd /tmp/k9s/${stamp} && wget https://github.com/derailed/k9s/releases/latest/download/k9s_linux_amd64.deb && sudo apt install ./k9s_linux_amd64.deb
 }
 
 upfzf() {
