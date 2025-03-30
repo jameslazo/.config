@@ -28,6 +28,11 @@ if [ -d "$HOME/.local/bin" ] ; then
   PATH="$HOME/.local/bin:$PATH"
 fi
 
+#[ -f /usr/bin/hyprland ] && exec hyprland
+if ! pgrep -x "hyprland" > /dev/null; then
+    [ -f /usr/bin/hyprland ] && exec hyprland
+fi
+
 #if uwsm check may-start; then
 #  exec systemd-cat -t uwsm_start uwsm start defaultuwsm start hyprland.desktop
 #fi

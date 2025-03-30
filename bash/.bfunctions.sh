@@ -1,3 +1,6 @@
+#\\\\\\\\\\\\\\\#
+#\\\FUNCTIONS\\\#
+#\\\\\\\\\\\\\\\#
 gp() {
   microk8s kubectl get pods -n $1
 }
@@ -13,4 +16,11 @@ upk9s() {
 
 upfzf() {
   git clone --depth 1 https://github.com/junegunn/fzf.git /tmp/.fzf && cp -r /tmp/.fzf ~ && ~/.fzf/install
+}
+
+sb() {
+  . $CFB/.bashrc
+  pgrep tmux &> /dev/null && tmux source-file $CF/tmux/tmux.conf
+  . /etc/environment
+  clear
 }

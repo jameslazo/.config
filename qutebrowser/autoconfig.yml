@@ -21,9 +21,12 @@ settings:
     https://github.com: access-paste
   content.javascript.enabled:
     '*://*.duckduckgo.com/*': true
-    '*://*.nextdns.io/*': true
-    '*://*.proton.me/*': true
+    '*://*.wiki.hyprland.org/*': true
     global: false
+  downloads.location.prompt:
+    global: false
+  downloads.remove_finished:
+    global: 1000
   tabs.position:
     global: left
   tabs.show:

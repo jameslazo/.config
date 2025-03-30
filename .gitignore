@@ -6,9 +6,10 @@
 
 # Whitelist
 !bash/*
+!hypr/*
+!git/*
 !nano/*
 !tmux/*
-!git/*
 !qute*/*.yml
 !.gitignore
 !README.md

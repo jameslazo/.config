@@ -18,7 +18,7 @@ if ! shopt -oq posix; then
 fi
 
 # start uwsm in arch
-if uwsm check may-start && uwsm select; then
-  exec uwsm start default
-fi
+#if uwsm check may-start && uwsm select; then
+#  exec uwsm start default
+#fi
 #-------------------#
