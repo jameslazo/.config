@@ -10,7 +10,7 @@ export CODE=$HOME/code
 export CF=$HOME/.config
 export CFB=$CF/bash
 export KUBE_EDITOR=/usr/bin/nano
-export LANG=C
+export LANG=en_US.UTF-8
 export SMB='/run/user/$UID/gvfs/smb-share:server=mojo.lan,share=glisamba'
 #-------------------#
 

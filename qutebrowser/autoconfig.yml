@@ -17,8 +17,8 @@ settings:
     global: black
   colors.webpage.darkmode.enabled:
     global: true
-  content.javascript.clipboard:
-    https://github.com: access-paste
+#  content.javascript.clipboard:
+#    https://github.com: access-paste
   content.javascript.enabled:
     '*://*.duckduckgo.com/*': true
     '*://*.wiki.hyprland.org/*': true
