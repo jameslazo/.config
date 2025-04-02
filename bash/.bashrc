@@ -26,6 +26,7 @@ shopt -s autocd
 
 #\\\\\FUNCTIONS\\\\\#
 . $CFB/.bfunctions.sh
+#-------------------#
 
 #\\\\\\HISTORY\\\\\\#
 . $CFB/.bhistory.sh

@@ -20,7 +20,13 @@ upfzf() {
 
 sb() {
   . $CFB/.bashrc
-  pgrep tmux &> /dev/null && tmux source-file $CF/tmux/tmux.conf
-  . /etc/environment
+  pgrep tmux &>/dev/null && tmux source-file $CF/tmux/tmux.conf
   clear
+}
+
+nlog() {
+  log=$HOME/code/sandbox/log.md
+  today="# $(date '+%Y-%m-%d')"
+  entry=$(head -n 1 $log)
+  [ "$today" != "$entry" ] && echo -e "$today\n## Projects\n\n## Resources\n\n$(cat $log)" > $log && nano $log || nano $log
 }
