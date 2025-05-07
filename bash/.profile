@@ -28,9 +28,9 @@ if [ -d "$HOME/.local/bin" ] ; then
   PATH="$HOME/.local/bin:$PATH"
 fi
 
-#[ -f /usr/bin/hyprland ] && exec hyprland
-if ! pgrep -x "hyprland" > /dev/null; then
-    [ -f /usr/bin/hyprland ] && exec hyprland
+# launch hyprland in graphical displays only
+if [ -z "$DISPLAY" ] && [ -z "$WAYLAND_DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
+  [ -x /usr/bin/hyprland ] && exec hyprland
 fi
 
 #if uwsm check may-start; then
