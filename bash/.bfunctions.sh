@@ -28,5 +28,5 @@ nlog() {
   log=$HOME/code/sandbox/log.md
   today="# $(date '+%Y-%m-%d')"
   entry=$(head -n 1 $log)
-  [ "$today" != "$entry" ] && echo -e "$today\n## Projects\n\n## Resources\n\n$(cat $log)" > $log && nano $log || nano $log
+  [ "$today" != "$entry" ] && echo -e "$today\n## Projects\n- \n\n## Resources\n- []()\n\n$(cat $log)" > $log && nano $log || nano $log
 }

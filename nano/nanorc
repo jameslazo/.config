@@ -256,6 +256,8 @@ include "/usr/share/nano/*.nanorc"
 
 ## If <Tab> should always produce an actual TAB when editing a Makefile:
 extendsyntax makefile tabgives "	"
+extendsyntax json tabgives "	"
+extendsyntax go tabgives "	"
 
 ## Custom git config syntax
 include "/home/jazo/.config/nano/gitrc"
