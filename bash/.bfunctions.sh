@@ -30,3 +30,20 @@ nlog() {
   entry=$(head -n 1 $log)
   [ "$today" != "$entry" ] && echo -e "$today\n## Projects\n- \n\n## Resources\n- []()\n\n$(cat $log)" > $log && nano $log || nano $log
 }
+
+# WIP
+#agenda() {
+#  main=$HOME/code/meta/agenda.md
+#  weekly=$HOME/code/meta/weekly.md
+#  monthly=$HOME/code/meta/monthly.md
+#  lt=$HOME/code/meta/longterm.md
+#  mainlines=$(wc -l $main | awk '{print $1}')
+#  weeklylines=$(wc -l $weekly | awk '{print $1}')
+#  monthlylines=$(wc -l $monthly | awk '{print $1}')
+#  ltlines=$(wc -l $lt | awk '{print $1}')
+#  totallines=$((mainlines + weeklylines + monthlylines + ltlines))
+#  today="# $(date '+%Y-%m-%d')"
+#  entry=$(head -n $totallines $log)
+#  [ "$today" != "$entry" ] && echo -e "$today\n## Projects\n- \n\n## Resources\n- []()\n\n$(cat $log)" > $log && nano $log || nano $log
+#
+#}
