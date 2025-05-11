@@ -11,7 +11,16 @@ export CF=$HOME/.config
 export CFB=$CF/bash
 export KUBE_EDITOR=/usr/bin/nano
 export LANG=en_US.UTF-8
-export SMB='/run/user/$UID/gvfs/smb-share:server=mojo.lan,share=glisamba'
+export LANGUAGE=en_US.UTF-8
+#export LC_ALL=en_US.UTF-8
+export LC_CTYPE=en_US.UTF-8
+export SMB=/run/user/$UID/gvfs/smb-share:server=mojo.lan,share=glisamba
+export XDG_DATA_HOME=$HOME/.local/share
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_STATE_HOME=$HOME/.local/state
+#export XDG_DATA_DIRS=/usr/local/share/:/usr/share/
+export XDG_CONFIG_DIRS=/etc/xdg
+export XDG_CACHE_HOME=$HOME/.cache
 #-------------------#
 
 #\\\\\\OPTIONS\\\\\\#
