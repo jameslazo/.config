@@ -5,15 +5,16 @@
 !*/
 
 # Whitelist
-!bash/*
-!hypr/*
-!git/*
-!nvim/*
-!nano/*
-!tmux/*
-!qute*/*.yml
 !.gitignore
 !README.md
+!bash/*
+!fzf/*
+!git/*
+!hypr/*
+!nano/*
+!nvim/*
+!qute*/*.yml
+!tmux/*
 
 # Blacklist
 **/*~

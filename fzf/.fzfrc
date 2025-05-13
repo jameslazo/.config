@@ -1,0 +1,11 @@
+--layout=reverse
+--preview='fzf-preview.sh {}'
+--color=pointer:37
+--color=fg:223
+--color=prompt:223
+--color=query:223
+--color=info:223
+--color=current-fg:214
+--color=border:202
+--walker-skip=.kube_bak,.kube,.mozilla,.cache,.fzf,.docker
+

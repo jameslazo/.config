@@ -14,6 +14,8 @@ export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 #export LC_ALL=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
+export FZF_ALT_C_OPTS=--walker-root=$HOME
+export FZF_DEFAULT_OPTS_FILE=$CF/fzf/.fzfrc
 export SMB=/run/user/$UID/gvfs/smb-share:server=mojo.lan,share=glisamba
 export XDG_DATA_HOME=$HOME/.local/share
 export XDG_CONFIG_HOME=$HOME/.config
