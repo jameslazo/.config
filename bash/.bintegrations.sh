@@ -59,9 +59,9 @@ alias condad='conda deactivate'
 #\\\RANCHER\DESKTOP\\\#
 #\\\\\\\\\\\\\\\\\\\\\#
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-#if [[ ! "$PATH" =~ "$HOME/.rd/bin" ]]; then
-#  export PATH="$HOME/.rd/bin:$PATH"
-#fi
+if [[ ! "$PATH" =~ "$HOME/.rd/bin" ]]; then
+  export PATH="$HOME/.rd/bin:$PATH"
+fi
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
 
 
