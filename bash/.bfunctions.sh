@@ -28,7 +28,7 @@ upfzf() {
   else
     echo "Installing from git repo..."
     tmpdir=$(mktemp -d)
-    git clone --depth 1 https://github.com/junegunn/fzf.git ${tmpdir} && cp -r ${tmpdir}/.fzf ~ && ~/.fzf/install
+    git clone --depth 1 https://github.com/junegunn/fzf.git ${tmpdir}/.fzf && cp -r ${tmpdir}/.fzf ~ && ~/.fzf/install
   fi
 }
 
