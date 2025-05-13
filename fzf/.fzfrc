@@ -7,5 +7,8 @@
 --color=info:223
 --color=current-fg:214
 --color=border:202
---walker-skip=.kube_bak,.kube,.mozilla,.cache,.fzf,.docker
+--color=spinner:37
+--color=hl:202
+--color=current-hl:37
+--walker-skip=.kube_bak,.kube,.mozilla,.cache,.fzf,.docker,.local
 
