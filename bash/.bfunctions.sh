@@ -10,12 +10,26 @@ ta() {
 }
 
 upk9s() {
-  stamp=$(date "+%y%m%d_%H%M%S")
-  mkdir -p /tmp/k9s/${stamp} && cd /tmp/k9s/${stamp} && wget https://github.com/derailed/k9s/releases/latest/download/k9s_linux_amd64.deb && sudo apt install ./k9s_linux_amd64.deb
+  if [ -f "/usr/bin/apt" ]; then
+    echo "Installing from git repo..."
+    cd $(mktemp -d) && wget https://github.com/derailed/k9s/releases/latest/download/k9s_linux_amd64.deb && sudo apt install ./k9s_linux_amd64.deb
+  elif [ -f "/usr/bin/pacman" ]; then
+    echo "Installing via pacman..."
+    sudo pacman -Sy k9s
+  else
+    echo "Neither apt nor pacman found. Skipping install."
+  fi
 }
 
 upfzf() {
-  git clone --depth 1 https://github.com/junegunn/fzf.git /tmp/.fzf && cp -r /tmp/.fzf ~ && ~/.fzf/install
+  if [ -f "/usr/bin/pacman" ]; then
+    echo "Installing via pacman..."
+    sudo pacman -Sy fzf
+  else
+    echo "Installing from git repo..."
+    tmpdir=$(mktemp -d)
+    git clone --depth 1 https://github.com/junegunn/fzf.git ${tmpdir} && cp -r ${tmpdir}/.fzf ~ && ~/.fzf/install
+  fi
 }
 
 sb() {
