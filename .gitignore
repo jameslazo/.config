@@ -8,6 +8,7 @@
 !bash/*
 !hypr/*
 !git/*
+!nvim/*
 !nano/*
 !tmux/*
 !qute*/*.yml
