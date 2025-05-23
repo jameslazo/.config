@@ -60,14 +60,14 @@ alias condad='conda deactivate'
 #\\\RANCHER\DESKTOP\\\#
 #\\\\\\\\\\\\\\\\\\\\\#
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-[ -f "$HOME/.rd/bin" ] && [[ ":$PATH:" != *":$HOME/.rd/bin:"* ]] && export PATH="$HOME/.rd/bin:$PATH"
+[ -d $HOME/.rd/bin ] && [[ ":$PATH:" != *":$HOME/.rd/bin:"* ]] && export PATH="$HOME/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
 
 
 #\\\\\\\\\\\\#
 #\\\GOLANG\\\#
 #\\\\\\\\\\\\#
-[ -f $HOME/go/bin ] && [[ ":$PATH:" != *":$HOME/go/bin:"* ]] && export PATH="$HOME/go/bin:$PATH"
+[ -d $HOME/go/bin ] && [[ ":$PATH:" != *":$HOME/go/bin:"* ]] && export PATH="$HOME/go/bin:$PATH"
 
 
 #\\\\\\\\\\\\\\#
@@ -76,12 +76,13 @@ alias condad='conda deactivate'
 if command -v brew &>/dev/null; then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
-#--------------#
+
 export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew"
 export HOMEBREW_CELLAR="/home/linuxbrew/.linuxbrew/Cellar"
 export HOMEBREW_REPOSITORY="/home/linuxbrew/.linuxbrew/Homebrew"
 [ -z "${MANPATH-}" ] || export MANPATH=":${MANPATH#:}";
 export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:${INFOPATH:-}"
-[ -f /home/linuxbrew/.linuxbrew/bin ] && [[ ":$PATH:" != *":/home/linuxbrew/.linuxbrew/bin:"* ]] && export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH"
+[ -d /home/linuxbrew/.linuxbrew/bin ] && [[ ":$PATH:" != *":/home/linuxbrew/.linuxbrew/bin:"* ]] && export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH"
+#--------------#
 
 
