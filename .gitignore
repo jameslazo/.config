@@ -11,6 +11,7 @@
 !fzf/*
 !git/*
 !hypr/*
+!kitty/*
 !nano/*
 !nvim/*
 !qute*/*.yml
