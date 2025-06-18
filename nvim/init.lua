@@ -5,6 +5,7 @@ vim.opt.softtabstop = 2        -- Number of spaces inserted/deleted for <Tab>/<B
 vim.opt.shiftwidth = 2         -- Number of spaces for autoindent
 vim.opt.number = true          -- Show line numbers in the margin
 vim.opt.list = true            -- Enable display of characters in listchars
+vim.opt.clipboard = "unnamedplus"
 vim.opt.listchars = {
   tab = '» ',                -- Show tabs as '> '
   trail = '·',               -- Show trailing whitespace with a middle dot (U+00B7)
@@ -76,9 +77,14 @@ local plugins = {
     config = function()
       require("nvim-treesitter.configs").setup({
         ensure_installed = {
+          "bash",
+          "json",
           "lua",
+          "markdown",
           "python",
-          "terraform"
+          "terraform",
+          "vim",
+          "yaml"
           -- Add other languages as needed
         },
         highlight = {
@@ -138,3 +144,12 @@ require("lazy").setup(plugins, opts)
 --   end
 -- })
 
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "markdown",
+  callback = function()
+    vim.opt_local.expandtab = true
+    vim.opt_local.tabstop = 2
+    vim.opt_local.softtabstop = 2
+    vim.opt_local.shiftwidth = 2
+  end,
+})

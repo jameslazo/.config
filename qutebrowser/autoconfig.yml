@@ -15,16 +15,33 @@ settings:
     global: orange
   colors.tabs.bar.bg:
     global: black
+  colors.tabs.selected.even.bg:
+    global: darkorange
+  colors.tabs.selected.even.fg:
+    global: white
+  colors.tabs.selected.odd.bg:
+    global: darkorange
   colors.webpage.darkmode.algorithm:
     global: lightness-cielab
   colors.webpage.darkmode.enabled:
     global: true
+  content.javascript.clipboard:
+    https://github.com: access-paste
+    https://grafana.com: access-paste
+    https://www.talos.dev: access-paste
   content.javascript.enabled:
+    '*://*.askubuntu.com/*': true
     '*://*.duckduckgo.com/*': true
+    '*://*.factory.talos.dev/*': true
     '*://*.gist.github.com/*': true
     '*://*.github.com/*': true
+    '*://*.openebs.io/*': true
+    '*://*.serverfault.com/*': true
+    '*://*.superuser.com/*': true
     '*://*.unix.stackexchange.com/*': true
     '*://*.wiki.hyprland.org/*': true
+    '*://*.www.reddit.com/*': true
+    '*://*.www.talos.dev/*': true
     global: false
   downloads.location.prompt:
     global: false

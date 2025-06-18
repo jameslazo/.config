@@ -10,7 +10,8 @@ export CODE=$HOME/code
 export CF=$HOME/.config
 export CFB=$CF/bash
 export GOPATH=$HOME/go
-export KUBE_EDITOR=/usr/bin/nano
+export KUBE_EDITOR=/usr/bin/vi
+export KUBECONFIG=$HOME/.kube/kubeconfig
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 #export LC_ALL=en_US.UTF-8
@@ -24,6 +25,13 @@ export XDG_STATE_HOME=$HOME/.local/state
 #export XDG_DATA_DIRS=/usr/local/share/:/usr/share/
 export XDG_CONFIG_DIRS=/etc/xdg
 export XDG_CACHE_HOME=$HOME/.cache
+export XDG_PICTURES_DIR=$HOME/Pictures
+export GRIM_DEFAULT_DIR=$XDG_PICTURES_DIR/screenshots
+#------- IME -------#
+GTK_IM_MODULE=wayland
+QT_IM_MODULE=fcitx
+QT_IM_MODULES="wayland;fcitx;ibus"
+XMODIFIERS=@im=fcitx
 #-------------------#
 
 #\\\\\\OPTIONS\\\\\\#
@@ -50,9 +58,12 @@ shopt -s autocd
 
 #\\\\\\COLORS\\\\\\\#
 . $CFB/.bcolors.sh
+#. $CF/wal/theme
 #-------------------#
 
 #\\\\INTEGRATIONS\\\#
 . $CFB/.bintegrations.sh
 #-------------------#
 
+#\\\\\\SECRETS\\\\\\#
+. ~/secret/.config-secrets/.bsecrets

@@ -388,3 +388,12 @@ bg='48;5;'
 # Apply theme
 bash_theme
 #------------#
+
+#\\\\\\\\\\\\\\\#
+#\\\DARK\MODE\\\#
+#\\\\\\\\\\\\\\\#
+export GTK_THEME=Adwaita:dark
+export GTK2_RC_FILES=/usr/share/themes/Adwaita-dark/gtk-2.0/gtkrc
+export QT_STYLE_OVERRIDE=Adwaita-Dark
+#---------------#
+

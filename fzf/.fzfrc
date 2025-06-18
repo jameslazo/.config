@@ -1,5 +1,5 @@
 --layout=reverse
---preview='fzf-preview.sh {}'
+--preview='cat {}'
 --color=pointer:37
 --color=fg:223
 --color=prompt:223
@@ -10,5 +10,6 @@
 --color=spinner:37
 --color=hl:202
 --color=current-hl:37
---walker-skip=.kube_bak,.kube,.mozilla,.cache,.fzf,.docker,.local
+--multi
+--walker-skip=.kube_bak,.kube,.mozilla,.cache,.fzf,.docker,.local,.talos
 

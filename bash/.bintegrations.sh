@@ -3,7 +3,8 @@
 #\\\\\\\\\#
 export FZF_DEFAULT_COMMAND='find . -type d \( -name .venv -o -name __pycache__ -o -name .git \) -prune -o -type f -print'
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash && eval "$(fzf --bash)"
+# [ -f ~/.fzf.bash ] && source ~/.fzf.bash && eval "$(fzf --bash)"
+command -v fzf &> /dev/null && eval "$(fzf --bash)"
 
 #\\\ALIASES\\\#
 alias drm='docker rm $(docker ps --format "{{.ID}} {{.Image}} {{.Names}} {{.RunningFor}}" | fzf --reverse | awk  '"'"'{print $1}'"'"')'
