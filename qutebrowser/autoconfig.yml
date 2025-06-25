@@ -30,6 +30,7 @@ settings:
     https://grafana.com: access-paste
     https://www.talos.dev: access-paste
   content.javascript.enabled:
+    '*://*.archlinux.org/*': true
     '*://*.askubuntu.com/*': true
     '*://*.duckduckgo.com/*': true
     '*://*.factory.talos.dev/*': true
