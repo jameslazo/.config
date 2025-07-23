@@ -111,7 +111,7 @@ bash_theme() {
       neutral="${color_map[navajowhite1]}"
       ;;
   esac
-  export PS1='${debian_chroot:+($debian_chroot)}\[\033[${fg}${login}m\]\u@\h\[\033[${fg}${login}m\]:\[\033[${fg}${directory}m\]\w$(parse_git)\[\033[${fg}${neutral}m\]> '
+  export PS1='${debian_chroot:+($debian_chroot)}\[\033[${fg}${login}m\]\u@\H\[\033[${fg}${login}m\]:\[\033[${fg}${directory}m\]\w$(parse_git)\[\033[${fg}${neutral}m\]> '
   export LS_COLORS="rs=0:no=${fg}${neutral}:ow=${fg}${neutral}:di=01;${fg}${directory}:ex=${fg}${execute}:ln=${fg}${link}:*.bak=${fg}${backup}:*~=${fg}${backup}:*.conf=${fg}${conf}:"
 }
 

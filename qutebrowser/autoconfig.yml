@@ -25,6 +25,8 @@ settings:
     global: lightness-cielab
   colors.webpage.darkmode.enabled:
     global: true
+  content.geolocation:
+    https://www.dunkindonuts.com: false
   content.javascript.clipboard:
     https://github.com: access-paste
     https://grafana.com: access-paste

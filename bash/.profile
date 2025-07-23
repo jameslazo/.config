@@ -29,9 +29,9 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 
 # launch hyprland in graphical displays only
-if [ -z "$DISPLAY" ] && [ -z "$WAYLAND_DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
-  [ -x /usr/bin/hyprland ] && exec hyprland
-fi
+#if [ -z "$DISPLAY" ] && [ -z "$WAYLAND_DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
+#  [ -x /usr/bin/hyprland ] && exec hyprland
+#fi
 
 #if uwsm check may-start; then
 #  exec systemd-cat -t uwsm_start uwsm start defaultuwsm start hyprland.desktop
