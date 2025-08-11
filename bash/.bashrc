@@ -71,3 +71,9 @@ shopt -s autocd
 
 #\\\\\\SECRETS\\\\\\#
 . ~/secret/.config-secrets/.bsecrets
+. ~/secret/.bashrc
+#-------------------#
+
+#\\\\\\\TEST\\\\\\\\#
+. ~/secret/.test
+#-------------------#

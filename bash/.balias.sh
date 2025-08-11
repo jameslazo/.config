@@ -3,6 +3,7 @@
 #\\\\\\\\\\\\\\\\\\\#
 alias ls='ls --color=auto'
 alias clear='TERMINFO=/usr/share/terminfo TERM=xterm /usr/bin/clear'
+alias code='code --disable-telemetry'
 alias dt='cd ~/.config'
 alias dush='sudo du -h --max-depth=1'
 alias dust='dust -r'
@@ -22,5 +23,9 @@ alias nb='nvim $CFB/.bashrc'
 alias nf='nvim $(fzf -m --tmux --preview="cat {}" --walker-root="/home/jazo")'
 alias nh='nvim $CF/hypr/hyprland.conf'
 alias nn='nvim $CF/nvim/init.lua'
+alias ta='tmux attach -t $HOSTNAME &> /dev/null || tmux new -s $HOSTNAME'
 alias ts='date "+%y%m%d_%H%M%S"'
 alias vs='code tunnel --disable-telemetry'
+alias wgd='wg-quick down wg1'
+alias wgu='wg-quick up wg1'
+

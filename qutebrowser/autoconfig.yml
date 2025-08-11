@@ -26,6 +26,7 @@ settings:
   colors.webpage.darkmode.enabled:
     global: true
   content.geolocation:
+    https://careers.caci.com: false
     https://www.dunkindonuts.com: false
   content.javascript.clipboard:
     https://github.com: access-paste
@@ -33,11 +34,16 @@ settings:
     https://www.talos.dev: access-paste
   content.javascript.enabled:
     '*://*.archlinux.org/*': true
+    '*://*.arxiv.org/*': true
     '*://*.askubuntu.com/*': true
+    '*://*.docs.aws.amazon.com/*': true
+    '*://*.docs.docker.com/*': true
     '*://*.duckduckgo.com/*': true
     '*://*.factory.talos.dev/*': true
+    '*://*.forum.proxmox.com/*': true
     '*://*.gist.github.com/*': true
     '*://*.github.com/*': true
+    '*://*.hub.docker.com/*': true
     '*://*.openebs.io/*': true
     '*://*.serverfault.com/*': true
     '*://*.superuser.com/*': true

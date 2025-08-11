@@ -5,10 +5,6 @@ gp() {
   microk8s kubectl get pods -n $1
 }
 
-ta() {
-  tmux attach -t $HOSTNAME &> /dev/null || tmux new -s $HOSTNAME
-}
-
 upk9s() {
   if [ -f "/usr/bin/apt" ]; then
     echo "Installing from git repo..."
@@ -45,7 +41,7 @@ nlog() {
   [ "$today" != "$entry" ] && echo -e "$today\n## Projects\n- \n\n## Resources\n- []()\n\n$(cat $log)" > $log && nvim $log || nvim $log
 }
 
-extract () {
+extract() {
   if [ ! -f "$1" ] ; then
     echo "'$1' does not exist."
     return 1
@@ -71,6 +67,10 @@ extract () {
   esac
 }
 
+mkcd() {
+  mkdir -p $1
+  cd $1
+}
 
 # WIP
 #agenda() {
