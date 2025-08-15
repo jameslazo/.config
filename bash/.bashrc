@@ -9,21 +9,22 @@ esac
 export CODE=$HOME/code
 export CF=$HOME/.config
 export CFB=$CF/bash
-export EDITOR=/sbin/nvim
+export EDITOR=$(which nvim) || $(which vim) || $(which vi) || $(which nano)
 export FZF_ALT_C_OPTS=--walker-root=$HOME
 export FZF_DEFAULT_OPTS_FILE=$CF/fzf/.fzfrc
 export GTK_THEME=Adwaita-dark
 export GTK2_RC_FILES=/usr/share/themes/Adwaita-dark/gtk-2.0/gtkrc
 export GOPATH=$HOME/go
 export GRIM_DEFAULT_DIR=$XDG_PICTURES_DIR/screenshots
-export KUBE_EDITOR=/sbin/nvim
+export KUBE_EDITOR=$EDITOR
 export KUBECONFIG=$HOME/.kube/kubeconfig
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 #export LC_ALL=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
+export PKG_MGR="$(which pacman) -Sy" || "$(which apt) install" || "$(which dnf) install"
+export PKG_MGR_ALT="$(which yay) -Sy" || "$(which yum) install" || "$(which snap) install" || "$(which brew) install"
 export QT_STYLE_OVERRIDE=Adwaita-Dark
-export SMB=/run/user/$UID/gvfs/smb-share:server=mojo.lan,share=glisamba
 export XDG_DATA_HOME=$HOME/.local/share
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_STATE_HOME=$HOME/.local/state
