@@ -9,7 +9,7 @@ sb() {
 
 mkcd() {
   if [ -z "$1" ]; then 
-    echo "Usage: mkcd PATH"
+    echo "usage: mkcd PATH"
     return 1
   fi
   mkdir -p "$1" && cd "$1"
@@ -17,7 +17,7 @@ mkcd() {
 
 mvsubd() {
   if [ -z "$1" ]; then 
-    echo "Usage: mvsubd SUBDIR"
+    echo "usage: mvsubd SUBDIR"
     return 1
   fi
   for file in $(ls -A | grep -v "$1"); do
@@ -41,6 +41,20 @@ newsh() {
     cp $script_tmpl .
     $EDITOR tmpl.sh
   fi
+}
+
+cbsub() {
+  if [ $XDG_SESSION_TYPE != "wayland" ]; then
+    echo "cbsub is for wayland sessions only"
+    return 1
+  elif [ $XDG_SESSION_TYPE == "wayland" ] && [ ! $(which wl-paste) ]; then
+    sudo $PKG_MGR wl-clipboard
+  fi
+  if [ -z "$1" ]; then
+    echo "usage: cbsub PATTERN1 PATTERN2 (omit PATTERN2 to delete PATTERN1)"
+    return 1
+  fi
+  wl-paste -n | sed "s|$1|$2|g" | wl-copy -n
 }
 
 extract() {

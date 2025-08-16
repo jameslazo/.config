@@ -36,6 +36,7 @@ settings:
     '*://*.archlinux.org/*': true
     '*://*.arxiv.org/*': true
     '*://*.askubuntu.com/*': true
+    '*://*.containers.dev/*': true
     '*://*.docs.aws.amazon.com/*': true
     '*://*.docs.docker.com/*': true
     '*://*.duckduckgo.com/*': true
