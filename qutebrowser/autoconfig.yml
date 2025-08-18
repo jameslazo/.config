@@ -49,6 +49,7 @@ settings:
     '*://*.serverfault.com/*': true
     '*://*.superuser.com/*': true
     '*://*.unix.stackexchange.com/*': true
+    '*://*.wiki.hypr.land/*': true
     '*://*.wiki.hyprland.org/*': true
     '*://*.www.reddit.com/*': true
     '*://*.www.talos.dev/*': true

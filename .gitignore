@@ -16,8 +16,10 @@
 !nano/*
 !nvim/*
 !qute*/*.yml
+!sh/*
 !tmux/*
 
 # Blacklist
 **/*~
 **/*.bak
+*.bak/
