@@ -17,7 +17,7 @@
 !qute*/*.yml
 !sh/*
 !tmux/*
-!vim/*
+!vim/**
 
 # Blacklist
 **/*~
