@@ -13,13 +13,19 @@
 !git/*
 !hypr/*
 !kitty/*
-!nano/*
 !nvim/*
 !qute*/*.yml
 !sh/*
 !tmux/*
+!vim/*
 
 # Blacklist
 **/*~
 **/*.bak
 *.bak/
+*.tar
+*.tgz
+*.tbz2
+*.gz
+*.bz2
+*.xz

@@ -34,10 +34,10 @@ parse_git() {
 
 bash_theme() {
   # Themes provided with descriptive color names
-  oasis=(214_orange1 202_orangered1 037_lightseagreen 156_palegreen1 068_steelblue3 130_darkorange3 089_deeppink4 223_navajowhite1)
-  eighties=(118_chartreuse1 086_aquamarine1 201_magenta1 156_palegreen1 068_steelblue3 029_springgreen4 089_deeppink4 225_thistle1)
-  lightning=(240_grey35 226_yellow1 196_red1 156_palegreen1 068_steelblue3 136_darkgoldenrod 089_deeppink4 229_wheat1)
-  monochrome=(250_grey75 240_grey35 231_white 156_palegreen1 068_steelblue3 250_grey75 089_deeppink4 253_grey87)
+  oasis=(214_orange1 202_orangered1 037_lightseagreen 156_palegreen1 068_steelblue3 130_darkorange3 132_dusty_ping 223_navajowhite1)
+  eighties=(118_chartreuse1 086_aquamarine1 201_magenta1 156_palegreen1 068_steelblue3 029_springgreen4 132_dusty_ping 225_thistle1)
+  lightning=(240_grey35 226_yellow1 196_red1 156_palegreen1 068_steelblue3 136_darkgoldenrod 132_dusty_ping 229_wheat1)
+  monochrome=(250_grey75 240_grey35 231_white 156_palegreen1 068_steelblue3 250_grey75 132_dusty_ping 253_grey87)
   sweetsixteen=(010_16green 012_16blue 014_16cyan 011_16yellow 013_16magenta 008_16grey 003_16darkyellow 007_16offwhite)
 
   # set theme with theme=("${themename[@]")
@@ -75,10 +75,9 @@ bash_theme() {
     fi
   }
 
-  export PS1='${debian_chroot:+($debian_chroot)}\[\033[${fg}${login}m\]\u@\H\[\033[${fg}${login}m\]:\[\033[${fg}${directory}m\]\w$(parse_git)\[\033[${fg}${neutral}m\]> '
+  export PS1='${debian_chroot:+($debian_chroot)}\[\033[${fg}${login}m\]\u\[\033[${fg}${directory}m\]@\[\033[${fg}${login}m\]\H\[\033[${fg}${login}m\] \[\033[${fg}${directory}m\]\w$(parse_git)\[\033[${fg}${neutral}m\]> '
   export LS_COLORS="rs=0:no=${fg}${neutral}:ow=${fg}${neutral}:di=01;${fg}${directory}:ex=${fg}${execute}:ln=${fg}${link}:*.bak=${fg}${backup}:*~=${fg}${backup}:*.conf=${fg}${conf}:"
 }
-
 # Apply theme
 bash_theme
 

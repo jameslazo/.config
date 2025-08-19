@@ -5,7 +5,7 @@ case $- in
 esac
 
 #---ENV VARS---#
-export EDITOR=$(which nvim) || $(which vim) || $(which vi) || $(which nano)
+export EDITOR="$(which vim)"
 export FZF_ALT_C_OPTS=--walker-root=$HOME
 export FZF_DEFAULT_COMMAND='find . -type d \( -name .venv -o -name __pycache__ -o -name .git \) -prune -o -type f -print'
 export FZF_DEFAULT_OPTS_FILE=$HOME/.config/fzf/.fzfrc
@@ -14,8 +14,8 @@ export KUBECONFIG=$HOME/.kube/kubeconfig
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
-export PKG_MGR="$(which pacman) -Sy" || "$(which apt) install" || "$(which dnf) install"
-export PKG_MGR_ALT="$(which yay) -Sy" || "$(which yum) install" || "$(which snap) install" || "$(which brew) install"
+export PKG_MGR="$(find /usr/bin -name pacman -o -name apt -o -name dnf)"
+export PKG_MGR_ALT="$(find /usr/bin -name yay -o -name yum -o -name snap -o -name brew)"
 export XDG_DATA_HOME=$HOME/.local/share
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_STATE_HOME=$HOME/.local/state
