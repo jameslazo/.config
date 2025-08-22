@@ -3,6 +3,8 @@ vim.opt.expandtab = true       -- Use spaces instead of tabs
 vim.opt.tabstop = 2            -- Number of visual spaces per <Tab>
 vim.opt.softtabstop = 2        -- Number of spaces inserted/deleted for <Tab>/<BS>
 vim.opt.shiftwidth = 2         -- Number of spaces for autoindent
+vim.opt.number = true
+vim.opt.cursorline = true
 vim.opt.rnu = true          -- Show line numbers in the margin
 vim.opt.list = true            -- Enable display of characters in listchars
 vim.opt.clipboard = "unnamed"
@@ -15,6 +17,33 @@ vim.opt.listchars = {
   -- eol = '¬'
   -- You can add more, e.g., extends = '»', precedes = '«' for lines extending/preceding screen
 }
+vim.o.background = "dark" -- or "light" for light mode
+vim.cmd([[colorscheme oasis]])
+
+-- require("gruvbox").setup({
+--   terminal_colors = true, -- add neovim terminal colors
+--   undercurl = true,
+--   underline = true,
+--   bold = true,
+--   italic = {
+--     strings = true,
+--     emphasis = true,
+--     comments = true,
+--     operators = false,
+--     folds = true,
+--   },
+--   strikethrough = true,
+--   invert_selection = false,
+--   invert_signs = false,
+--   invert_tabline = false,
+--   inverse = true, -- invert background for search, diffs, statuslines and errors
+--   contrast = "", -- can be "hard", "soft" or empty string
+--   palette_overrides = {},
+--   overrides = {},
+--   dim_inactive = false,
+--   transparent_mode = false,
+-- })
+-- vim.cmd("colorscheme gruvbox")
 -- vim.cmd("language en_US") -- Uncomment if you need to force a specific language
 
 -- Set mapleader (ensure it's a single space)
@@ -47,28 +76,38 @@ vim.opt.rtp:prepend(lazypath)
 --[[ Plugin Definitions ]]
 local plugins = {
   -- Colorscheme
-  { "savq/melange-nvim" },
-  {
-    "xero/miasma.nvim",
-    lazy = false,
-    priority = 1000,
-    config = function()
-      vim.cmd("colorscheme miasma")
-    end,
-  },
+--  { "ellisonleao/gruvbox.nvim", priority = 1000 , config = true },
 
-  -- Fuzzy Finder
-  {
-    'nvim-telescope/telescope.nvim',
-    tag = '0.1.8', -- Consider checking for a newer stable tag
-    dependencies = { 'nvim-lua/plenary.nvim' },
-    config = function()
-      local builtin = require("telescope.builtin")
-      vim.keymap.set('n', '<leader>f', builtin.find_files, { desc = "Find files" })
-      vim.keymap.set('n', '<leader>g', builtin.live_grep, { desc = "Live grep" })
-      -- You can add more Telescope actions here
-    end
-  },
+--  { "gruvbox-oasis" },
+--  {
+--    "gruvbox-oasis",
+--    lazy = false,
+--    priority = 1000,
+--    config = function()
+--      vim.cmd("colorscheme gruvbox-oasis")
+--    end,
+--  },
+--  { "savq/melange-nvim" },
+--  {
+--    "xero/miasma.nvim",
+--    lazy = false,
+--    priority = 1000,
+--    config = function()
+--      vim.cmd("colorscheme miasma")
+--    end
+-- 
+--  -- Fuzzy Finder
+--  {
+--    'nvim-telescope/telescope.nvim',
+--    tag = '0.1.8', -- Consider checking for a newer stable tag
+--    dependencies = { 'nvim-lua/plenary.nvim' },
+--    config = function()
+--      local builtin = require("telescope.builtin")
+--      vim.keymap.set('n', '<leader>f', builtin.find_files, { desc = "Find files" })
+--      vim.keymap.set('n', '<leader>g', builtin.live_grep, { desc = "Live grep" })
+--      -- You can add more Telescope actions here
+--    end
+--  },
 
   -- Syntax Highlighting and More
   {
@@ -115,7 +154,7 @@ local plugins = {
       -- if #parsers_to_install > 0 then
       --   vim.cmd("TSInstall " .. table.concat(parsers_to_install, " "))
       -- end
-    end,
+    end
     -- Optional: Defer TSUpdate until after Neovim has fully started if build causes issues
     -- init = function()
     --   vim.defer_fn(function()
@@ -151,7 +190,7 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.tabstop = 2
     vim.opt_local.softtabstop = 2
     vim.opt_local.shiftwidth = 2
-  end,
+  end
 })
 
 vim.api.nvim_create_autocmd({"BufReadPost"}, {

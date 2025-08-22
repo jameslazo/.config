@@ -21,63 +21,106 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 #---THEMES---#
+# Git status parser
 parse_git() {
-  local branch
-  if branch=$(git symbolic-ref --short -q HEAD 2>/dev/null); then
-    local status=""
+  local br_name
+  if br_name=$(git symbolic-ref --short -q HEAD 2>/dev/null); then
+    local git_stat=""
     if [[ -n $(git status --porcelain 2>/dev/null) ]]; then
-      status="*"
+      git_stat="*"
     fi
-    echo -e "\033[${fg}${directory}m:\033[${fg}${git}m${branch}${status}"
+    echo -e "\e[${theme_dir}m:\e[${theme_git}m${br_name}${git_stat}"
   fi
 }
 
+# Theme, syntax formatting and export
 bash_theme() {
   # Themes provided with descriptive color names
-  oasis=(214_orange1 202_orangered1 037_lightseagreen 156_palegreen1 068_steelblue3 130_darkorange3 132_dusty_ping 223_navajowhite1)
-  eighties=(118_chartreuse1 086_aquamarine1 201_magenta1 156_palegreen1 068_steelblue3 029_springgreen4 132_dusty_ping 225_thistle1)
-  lightning=(240_grey35 226_yellow1 196_red1 156_palegreen1 068_steelblue3 136_darkgoldenrod 132_dusty_ping 229_wheat1)
-  monochrome=(250_grey75 240_grey35 231_white 156_palegreen1 068_steelblue3 250_grey75 132_dusty_ping 253_grey87)
-  sweetsixteen=(010_16green 012_16blue 014_16cyan 011_16yellow 013_16magenta 008_16grey 003_16darkyellow 007_16offwhite)
+  local oasis=(
+    214_orange1
+    202_orangered1
+    037_lightseagreen
+    108_darkseagreen
+    068_steelblue3
+    130_darkorange3
+    132_dusty_pink
+    223_navajowhite1
+  )
 
-  # set theme with theme=("${themename[@]")
-  # Theme names: oasis (default),eighties,lightning,monochrome,sweetsixteen
+  local eighties=(
+    118_chartreuse1
+    086_aquamarine1
+    201_magenta1
+    108_darkseagreen
+    068_steelblue3
+    029_springgreen4
+    132_dusty_pink
+    225_thistle1
+  )
 
-  if [ -z "$theme" ]; then
-    theme=("${oasis[@]}")
+  local lightning=(
+  240_grey35
+  226_yellow1
+  196_red1
+  108_darkseagreen
+  068_steelblue3
+  136_darkgoldenrod
+  132_dusty_pink
+  229_wheat
+  )
+
+  local monochrome=(
+  250_grey75
+  240_grey35
+  231_white
+  108_darkseagreen
+  068_steelblue3
+  250_grey75
+  132_dusty_pink
+  253_grey8
+  )
+
+  local sweetsixteen=(
+  010_16green
+  012_16blue
+  014_16cyan
+  011_16yellow
+  013_16magenta
+  008_16grey
+  003_16darkyellow
+  007_16offwhit
+  )
+
+  # Set theme with theme=("${themename[@]}")
+  local theme_var=()
+  local th_fg='38;5;'
+  local th_bg='48;5;'
+  if [[ -z $theme_var ]]; then
+    theme_var=("${oasis[@]}")
   fi
 
+  for i in "${theme_var[@]}";
+    do local theme+=("38;5;${i%%_*}")
+  done
 
   # Vars - strip descriptive color names
-  login="${theme[0]%_*}"
-  directory="${theme[1]%_*}"
-  git="${theme[2]%_*}"
-  execute="${theme[3]%_*}"
-  link="${theme[4]%_*}"
-  backup="${theme[5]%_*}"
-  conf="${theme[6]%_*}"
-  neutral="${theme[7]%_*}"
+  local mk_col='\[\e['
+  local rm_col='m\]'
+  local login="${theme[0]}"
+  theme_dir="${theme[1]}"
+  theme_git="${theme[2]}"
+  local execute="${theme[3]}"
+  local link="${theme[4]}"
+  local backup="${theme[5]}"
+  local conf="${theme[6]}"
+  local neutral="${theme[7]}"
 
-  fg='38;5;'
-  bg='48;5;'
+  # Export vars
+  export PS1="$mk_col$login$rm_col\u$mk_col$theme_dir$rm_col@$mk_col$login$rm_col\H$mk_col$login$rm_col $mk_col$theme_dir$rm_col\w\$(parse_git)$mk_col$neutral$rm_col> "
 
-  # Git context
-  parse_git() {
-    local branch
-    local status
-    local parse_git
-    if branch=$(git symbolic-ref --short -q HEAD 2>/dev/null); then
-      status=""
-      if [[ -n $(git status --porcelain 2>/dev/null) ]]; then
-        status="*"
-      fi
-    echo -e "\033[${fg}${directory}m:\033[${fg}${git}m${branch}${status}"
-    fi
-  }
-
-  export PS1='${debian_chroot:+($debian_chroot)}\[\033[${fg}${login}m\]\u\[\033[${fg}${directory}m\]@\[\033[${fg}${login}m\]\H\[\033[${fg}${login}m\] \[\033[${fg}${directory}m\]\w$(parse_git)\[\033[${fg}${neutral}m\]> '
-  export LS_COLORS="rs=0:no=${fg}${neutral}:ow=${fg}${neutral}:di=01;${fg}${directory}:ex=${fg}${execute}:ln=${fg}${link}:*.bak=${fg}${backup}:*~=${fg}${backup}:*.conf=${fg}${conf}:"
+  export LS_COLORS="rs=0:no=$neutral:ow=$neutral:di=01;$theme_dir:ex=$execute:ln=$link:*.bak=$backup:*~=$backup:*.conf=$conf:"
 }
+
 # Apply theme
 bash_theme
 
@@ -195,7 +238,7 @@ export QT_STYLE_OVERRIDE=Adwaita-Dark
 #105_pale_violet1
 #106_deep_amber
 #107_faded_gold
-#108_soft_gray
+#108_darkseagreen
 #109_dull_blue
 #110_dusty_periwinkle
 #111_lavender
@@ -344,3 +387,4 @@ export QT_STYLE_OVERRIDE=Adwaita-Dark
 #253_grey87
 #254_grey91
 #255_grey95
+

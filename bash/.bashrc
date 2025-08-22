@@ -5,15 +5,13 @@ case $- in
 esac
 
 #---ENV VARS---#
-export EDITOR="$(which vim)"
+export EDITOR=$(which nvim)
 export FZF_ALT_C_OPTS=--walker-root=$HOME
 export FZF_DEFAULT_COMMAND='find . -type d \( -name .venv -o -name __pycache__ -o -name .git \) -prune -o -type f -print'
 export FZF_DEFAULT_OPTS_FILE=$HOME/.config/fzf/.fzfrc
 export KUBE_EDITOR=$EDITOR
 export KUBECONFIG=$HOME/.kube/kubeconfig
-export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
-export LC_CTYPE=en_US.UTF-8
 export PKG_MGR="$(find /usr/bin -name pacman -o -name apt -o -name dnf)"
 export PKG_MGR_ALT="$(find /usr/bin -name yay -o -name yum -o -name snap -o -name brew)"
 export XDG_DATA_HOME=$HOME/.local/share
@@ -112,7 +110,7 @@ mvsubd() {
 
 newsh() {
   local sh_tmpl=$HOME/.config/sh/tmpl.sh
-  local sh_name"${1:-tmpl.sh}"
+  local sh_name="${1:-tmpl.sh}"
   cp $sh_tmpl "$1"
   $EDITOR "$1"
 }
@@ -156,6 +154,15 @@ k8ex() {
 
 command -v lesspipe &> /dev/null && eval "$(SHELL=/bin/sh lesspipe)"
 command -v fzf &> /dev/null && eval "$(fzf --bash)"
+
+upk9s() {
+  if [[ $(echo "$PKG_MGR") == *"pacman"* ]]; then
+    [ "$(whoami)" == "root" ] && $PKG_MGR k9s || sudo $PKG_MGR k9s
+  else
+    echo "Installing k9s from git repo..."
+    cd $(mktemp -d) && wget https://github.com/derailed/k9s/releases/latest/download/k9s_linux_amd64.deb && sudo apt install ./k9s_linux_amd64.deb
+  fi
+}
 
 upk9s() {
   if [[ $(echo "$PKG_MGR") == *"pacman"* ]]; then

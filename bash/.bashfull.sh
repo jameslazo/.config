@@ -25,6 +25,7 @@ alias nb='$EDITOR $CFB/.bashrc'
 alias nbf='$EDITOR $CFB/.bashfull.sh'
 alias nh='$EDITOR $CF/hypr/hyprland.conf'
 alias nn='$EDITOR $CF/nvim/init.lua'
+#alias nvim='$EDITOR'
 alias ta='tmux attach -t $HOSTNAME &> /dev/null || tmux new -s $HOSTNAME'
 alias ts='date "+%y%m%d_%H%M%S"'
 alias vs='code tunnel --disable-telemetry'
@@ -36,7 +37,7 @@ nlog() {
   local log=$CODE/sandbox/log.md
   local today="# $(date '+%Y-%m-%d')"
   local entry=$(head -n 1 $log)
-  [ "$today" != "$entry" ] && echo -e "$today\n## Projects\n- \n\n## Resources\n- []()\n\n" | cat - $log > $log && $EDITOR $log || $EDITOR $log
+  [ "${today}" != "$entry" ] && echo -e "$today\n## Projects\n- \n\n## Resources\n- []()\n\n$(cat $log)" > $log && $EDITOR $log || $EDITOR $log
 }
 
 cbsub() {
@@ -51,6 +52,16 @@ cbsub() {
     return 1
   fi
   wl-paste -n | sed "s|$1|$2|g" | wl-copy -n
+}
+
+fromhex() {
+  local hex=${1#"#"}
+  local r=$(printf '0x%0.2s' "$hex")
+  local g=$(printf '0x%0.2s' ${hex#??})
+  local b=$(printf '0x%0.2s' ${hex#????})
+  printf '%03d\n' "$(( (r<75?0:(r-35)/40)*6*6 + 
+                       (g<75?0:(g-35)/40)*6   +
+                       (b<75?0:(b-35)/40)     + 16 ))"
 }
 
 #---INTEGRATIONS---#
