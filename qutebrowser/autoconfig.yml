@@ -29,8 +29,10 @@ settings:
     https://careers.caci.com: false
     https://www.dunkindonuts.com: false
   content.javascript.clipboard:
+    https://docs.redhat.com: access-paste
     https://github.com: access-paste
     https://grafana.com: access-paste
+    https://wiki.hypr.land: access-paste
     https://www.talos.dev: access-paste
   content.javascript.enabled:
     '*://*.archlinux.org/*': true
@@ -46,9 +48,11 @@ settings:
     '*://*.github.com/*': true
     '*://*.hub.docker.com/*': true
     '*://*.openebs.io/*': true
+    '*://*.search.brave.com/*': true
     '*://*.serverfault.com/*': true
     '*://*.superuser.com/*': true
     '*://*.unix.stackexchange.com/*': true
+    '*://*.who.is/*': true
     '*://*.wiki.hypr.land/*': true
     '*://*.wiki.hyprland.org/*': true
     '*://*.www.reddit.com/*': true

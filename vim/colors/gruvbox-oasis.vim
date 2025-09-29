@@ -95,25 +95,25 @@ let s:gb.dark3       = ['#665c54', 241]     " 102-92-84
 let s:gb.dark4       = ['#7c6f64', 243]     " 124-111-100
 let s:gb.dark4_256   = ['#7c6f64', 243]     " 124-111-100
 
-let s:gb.gray_245    = ['#928374', 250]     " 146-131-116 comments
+let s:gb.gray_245    = ['#bcbcbc', 250]     " 146-131-116 comments
 let s:gb.gray_244    = ['#928374', 244]     " 146-131-116
 
 let s:gb.light0_hard = ['#f9f5d7', 230]     " 249-245-215
 let s:gb.light0      = ['#fbf1c7', 229]     " 253-244-193
 let s:gb.light0_soft = ['#f2e5bc', 228]     " 242-229-188
-let s:gb.light1      = ['#ebdbb2', 223]     " 235-219-178 neutral text
+let s:gb.light1      = ['#ffd7af', 223]     " 235-219-178 neutral text
 let s:gb.light2      = ['#d5c4a1', 250]     " 213-196-161
 let s:gb.light3      = ['#bdae93', 248]     " 189-174-147
 let s:gb.light4      = ['#a89984', 246]     " 168-153-132
 let s:gb.light4_256  = ['#a89984', 246]     " 168-153-132
 
-let s:gb.bright_red     = ['#fb4934', 37]     " 251-73-52 commands
-let s:gb.bright_green   = ['#b8bb26', 202]     " 184-187-38 functions/
-let s:gb.bright_yellow  = ['#fabd2f', 68]     " 250-189-47 vi mode/1stsearchhit
-let s:gb.bright_blue    = ['#83a598', 130]     " 131-165-152 set variables
-let s:gb.bright_purple  = ['#d3869b', 132]     " 211-134-155 digits
-let s:gb.bright_aqua    = ['#8ec07c', 68]     " 142-192-124 called vars/parentheses
-let s:gb.bright_orange  = ['#fe8019', 214]     " 254-128-25 flags/args/search
+let s:gb.bright_red     = ['#00afaf', 37]     " 251-73-52 commands
+let s:gb.bright_green   = ['#ff5f00', 202]     " 184-187-38 functions/
+let s:gb.bright_yellow  = ['#5f87d7', 68]     " 250-189-47 vi mode/1stsearchhit
+let s:gb.bright_blue    = ['#af5f00', 130]     " 131-165-152 set variables
+let s:gb.bright_purple  = ['#af5f87', 132]     " 211-134-155 digits
+let s:gb.bright_aqua    = ['#5f87d7', 68]     " 142-192-124 called vars/parentheses
+let s:gb.bright_orange  = ['#ffaf00', 214]     " 254-128-25 flags/args/search
 
 let s:gb.neutral_red    = ['#cc241d', 124]     " 204-36-29
 let s:gb.neutral_green  = ['#98971a', 106]     " 152-151-26

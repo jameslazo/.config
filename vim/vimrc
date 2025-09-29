@@ -1,11 +1,16 @@
+" let g:polyglot_disabled = ['markdown']
+" Plugin 'sheerun/vim-polyglot'
+" Plugin 'godlygeek/tabular'
+" Plugin 'preservim/vim-markdown'
+
 set showbreak=+++       " Wrap-broken line prefix
 set textwidth=100       " Line wrap (number of cols)
 set showmatch   " Highlight matching brace
-set visualbell  " Use visual bell (no beeping)
+" set visualbell  " Use visual bell (no beeping)
 
 syntax on
 set bg=dark
-colorscheme gruvbox-oasis
+colorscheme oasis
 set list lcs=tab:»·,space:·
 set hlsearch    " Highlight all search results
 set smartcase   " Enable smart-case search
@@ -21,5 +26,6 @@ set softtabstop=2       " Number of spaces per Tab
 
 set ruler       " Show row and column ruler information
 set rnu
+set number
 set undolevels=1000     " Number of undo levels
 set backspace=indent,eol,start  " Backspace behavior

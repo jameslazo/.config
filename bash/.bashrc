@@ -45,7 +45,7 @@ alias ltr='ls -thAlFr'
 alias ll='ls -hAlF'
 alias la='ls -Ah'
 alias l='ls -CFh'
-alias ta='tmux attach -t $HOSTNAME &> /dev/null || tmux new -s $HOSTNAME'
+alias ta='tmux attach -t $HOSTNAME &> /dev/null || tmux new -s $HOSTNAME "btop" \; new-window \; split-window -h \;'
 alias ts='date "+%y%m%d_%H%M%S"'
 
 #---HISTORY---#
@@ -54,7 +54,7 @@ shopt -s histappend
 HISTSIZE=200000000
 HISTFILESIZE=200000000
 HISTFILE=$HOME/.bash_history
-HISTIGNORE='?:??:pwd:exit:clear:cd ~*:history:git status:git add*:git commit*:tmux:nvim .git*:passwd *:[ \t]*:wl-*:tldr *'
+HISTIGNORE='?:??:pwd:exit:clear:cd ~*:history:git status:git add*:git commit*:tmux:nvim .git*:passwd *: *:wl-*:tldr *'
 PROMPT_COMMAND='history -a; history -n'
 
 #---MISCELLANEOUS---#

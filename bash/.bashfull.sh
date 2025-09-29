@@ -3,15 +3,16 @@ export CODE=$HOME/code
 export CF=$HOME/.config
 export CFB=$CF/bash
 export GOPATH=$HOME/go
+export XDG_PICTURES_DIR=$HOME/Pictures
 export GRIM_DEFAULT_DIR=$XDG_PICTURES_DIR/screenshots
 #export LC_ALL=en_US.UTF-8
 #export XDG_DATA_DIRS=/usr/local/share/:/usr/share/
-export XDG_PICTURES_DIR=$HOME/Pictures
 
 #---IME---#
-GTK_IM_MODULE=wayland
+#GTK_IM_MODULE=wayland
+GTK_IM_MODULE=fcitx
 QT_IM_MODULE=fcitx
-QT_IM_MODULES="wayland;fcitx;ibus"
+#QT_IM_MODULES="wayland;fcitx;ibus"
 XMODIFIERS=@im=fcitx
 
 #---ALIASES---#
@@ -19,7 +20,7 @@ alias code='code --disable-telemetry'
 alias dt='cd ~/.config'
 alias ff='fastfetch -l ~/Pictures/img/T480/t480.png --logo-recache'
 alias grurp='grim -g "$(slurp)"'
-alias hex='hyprctl dispatch exit'
+alias hypx='hyprctl dispatch exit'
 alias hre='hyprctl reload'
 alias nb='$EDITOR $CFB/.bashrc'
 alias nbf='$EDITOR $CFB/.bashfull.sh'

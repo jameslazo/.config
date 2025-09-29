@@ -3,6 +3,7 @@ vim.opt.expandtab = true       -- Use spaces instead of tabs
 vim.opt.tabstop = 2            -- Number of visual spaces per <Tab>
 vim.opt.softtabstop = 2        -- Number of spaces inserted/deleted for <Tab>/<BS>
 vim.opt.shiftwidth = 2         -- Number of spaces for autoindent
+vim.opt.scrolloff = 10
 vim.opt.number = true
 vim.opt.cursorline = true
 vim.opt.rnu = true          -- Show line numbers in the margin
