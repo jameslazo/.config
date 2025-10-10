@@ -25,6 +25,8 @@ settings:
     global: lightness-cielab
   colors.webpage.darkmode.enabled:
     global: true
+  colors.webpage.preferred_color_scheme:
+    global: dark
   content.geolocation:
     https://careers.caci.com: false
     https://www.dunkindonuts.com: false
@@ -40,6 +42,7 @@ settings:
     '*://*.askubuntu.com/*': true
     '*://*.containers.dev/*': true
     '*://*.docs.aws.amazon.com/*': true
+    '*://*.docs.ceph.com/*': false
     '*://*.docs.docker.com/*': true
     '*://*.duckduckgo.com/*': true
     '*://*.factory.talos.dev/*': true
@@ -50,6 +53,7 @@ settings:
     '*://*.openebs.io/*': true
     '*://*.search.brave.com/*': true
     '*://*.serverfault.com/*': true
+    '*://*.squidfunk.github.io/*': true
     '*://*.superuser.com/*': true
     '*://*.unix.stackexchange.com/*': true
     '*://*.who.is/*': true
@@ -62,6 +66,8 @@ settings:
     global: false
   downloads.remove_finished:
     global: 1000
+  history_gap_interval:
+    global: 45
   tabs.position:
     global: left
   tabs.show:

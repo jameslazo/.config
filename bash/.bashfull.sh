@@ -65,6 +65,27 @@ fromhex() {
                        (b<75?0:(b-35)/40)     + 16 ))"
 }
 
+color_print() {
+  # Strip the '#' if present
+  local hex_color="${1/#\#/}"
+  local text="$1"
+
+  # Extract R, G, B hex pairs
+  local r_hex="${hex_color:0:2}"
+  local g_hex="${hex_color:2:2}"
+  local b_hex="${hex_color:4:2}"
+
+  # Convert hex to decimal for R, G, B
+  # Bash's arithmetic expansion $((16#...)) handles hex to decimal conversion
+  local r_dec=$((16#$r_hex))
+  local g_dec=$((16#$g_hex))
+  local b_dec=$((16#$b_hex))
+
+  # 24-bit True Color Foreground ANSI escape sequence: \e[38;2;R;G;Bm
+  # \e[0m resets the color
+  printf "\e[38;2;%d;%d;%dm%s\e[0m\n" "$r_dec" "$g_dec" "$b_dec" "$text"
+}
+
 #---INTEGRATIONS---#
 # !! Contents within this block are managed by 'conda init' !!
 condaa() {

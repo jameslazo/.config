@@ -13,16 +13,20 @@
 !git/*
 !hypr/*
 !kitty/*
-!nvim/*
+!nvim/**
 !qute*/*.yml
-!sh/*
+!sh/setup_core.sh
+!sh/tmpl.sh
+!swaync/*
 !tmux/*
-!vim/**
+!wal/colors-waybar.css
+!waybar/*
 
 # Blacklist
 **/*~
 **/*.bak
 *.bak/
+*.log
 *.tar
 *.tgz
 *.tbz2
