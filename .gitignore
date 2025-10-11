@@ -21,6 +21,7 @@
 !tmux/*
 !wal/colors-waybar.css
 !waybar/*
+!wofi/*
 
 # Blacklist
 **/*~

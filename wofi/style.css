@@ -1,0 +1,106 @@
+@import url('/home/jazo/.config/wal/colors-waybar.css');
+
+@define-color mauve  @color7;
+@define-color red  @color7;
+@define-color lavender  @color7;
+@define-color text  @color7;
+@keyframes fadeIn {
+    0% {
+    }
+    100% {
+    }
+}
+
+* {
+    all:unset;
+    font-family: 'Audiowide';
+    font-size: 18px;
+    outline: none;
+    border: none;
+    text-shadow:none;
+    background-color:transparent;
+/*    background-color:transparent; */
+}
+
+window {
+    all:unset;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: alpha(@background,.9);
+}
+#inner-box {
+    margin: 2px;
+    padding: 5px
+    border: none;
+}
+#outer-box {    
+    border: none;
+}
+#scroll {
+    margin: 0px;
+    padding: 30px;
+    border: none;
+}
+#input {
+    all:unset;
+    margin-left:10px;
+    margin-right:10px;
+    margin-top:10px;
+    padding: 10px;
+    border: none;
+    outline: none;
+    color: @text;
+    box-shadow: 1px 1px 3px rgba(0,0,0, .4);
+    border-radius:10;
+    background-color: alpha(#014040,.8);
+}
+#input image {
+    border: none;
+    color: @red;
+    padding-right:10px;
+}
+#input * {
+    border: none;
+    outline: none;
+}
+
+#input:focus {
+    outline: none;
+    border: none;
+    border-radius:10;
+}
+#text {
+    margin: 5px;
+    border: none;
+    color: @text;
+    outline: none;
+}
+#text {
+    margin: 5px;
+    border: none;
+    color: @text;
+    outline: none;
+}
+#entry {
+    border: none;
+    margin: 5px;
+    padding: 10px;
+}
+#entry arrow {
+    border: none;
+    color: @lavender;
+
+}
+#entry:selected {
+    box-shadow: 1px 1px 3px rgba(0,0,0, .4);
+    border: none;
+    border-radius: 10px;
+    background-color:#014040;
+/*    background-color:transparent; */
+}
+#entry:selected #text {
+    color: @mauve;
+}
+#entry:drop(active) {
+    background-color: @lavender !important;
+}
