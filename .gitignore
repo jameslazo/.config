@@ -11,7 +11,6 @@
 !btop/*
 !fzf/*
 !git/*
-hypr/monitor.conf
 !hypr/*
 !kitty/*
 !nvim/**
@@ -36,3 +35,4 @@ hypr/monitor.conf
 *.gz
 *.bz2
 *.xz
+hypr/monitor.conf
