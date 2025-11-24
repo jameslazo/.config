@@ -6,7 +6,7 @@ esac
 
 #---ENV VARS---#
 export EDITOR=$(which nvim)
-export FZF_ALT_C_OPTS=--walker-root=$HOME
+export FZF_ALT_C_OPTS="--walker-root=$HOME --walker-skip=.git --preview 'tree -C {}'"
 export FZF_DEFAULT_COMMAND='find . -type d \( -name .venv -o -name __pycache__ -o -name .git \) -prune -o -type f -print'
 export FZF_DEFAULT_OPTS_FILE=$HOME/.config/fzf/.fzfrc
 export KUBE_EDITOR=$EDITOR
@@ -36,6 +36,7 @@ shopt -s autocd
 alias clear='TERMINFO=/usr/share/terminfo TERM=xterm /usr/bin/clear'
 alias dush='sudo du -h --max-depth=1'
 alias dust='dust -r'
+alias fzp='fzf --preview "cat {}"'
 alias ls='ls --color=auto'
 alias lS='ls -ShAlF'
 alias lx='ls -XhAlFr'
@@ -49,13 +50,13 @@ alias ta='tmux attach -t $HOSTNAME &> /dev/null || tmux new -s $HOSTNAME "btop" 
 alias ts='date "+%y%m%d_%H%M%S"'
 
 #---HISTORY---#
-HISTCONTROL=ignoreboth:erasedups
+#HISTCONTROL=ignoreboth
 shopt -s histappend
 HISTSIZE=200000000
 HISTFILESIZE=200000000
 HISTFILE=$HOME/.bash_history
 HISTIGNORE='?:??:pwd:exit:clear:cd ~*:history:git status:git add*:git commit*:tmux:nvim .git*:passwd *: *:wl-*:tldr *'
-PROMPT_COMMAND='history -a; history -n'
+PROMPT_COMMAND='history -a'
 
 #---MISCELLANEOUS---#
 # set variable identifying the chroot you work in (used in the prompt below)
@@ -164,15 +165,6 @@ upk9s() {
   fi
 }
 
-upk9s() {
-  if [[ $(echo "$PKG_MGR") == *"pacman"* ]]; then
-    [ "$(whoami)" == "root" ] && $PKG_MGR k9s || sudo $PKG_MGR k9s
-  else
-    echo "Installing k9s from git repo..."
-    cd $(mktemp -d) && wget https://github.com/derailed/k9s/releases/latest/download/k9s_linux_amd64.deb && sudo apt install ./k9s_linux_amd64.deb
-  fi
-}
-
 upfzf() {
   if [[ $(echo "$PKG_MGR") == *"pacman"* ]]; then
     [ "$(whoami)" == "root" ] && $PKG_MGR fzf || sudo $PKG_MGR fzf
@@ -184,8 +176,8 @@ upfzf() {
 }
 
 sb() {
-  if [[ ! -f $HOME/.config/.bashrc ]]; then
-    ln -s $(find $HOME/.config $HOME -name .bashrc -print -quit) $HOME/.config/.bashrc
+  if [[ ! -f $XDG_CONFIG_HOME/.bashrc ]]; then
+    ln -s $(find $XDG_CONFIG_HOME $HOME -name .bashrc -print -quit) $XDG_CONFIG_HOME/.bashrc
   fi
   . $HOME/.config/.bashrc
   pgrep tmux &>/dev/null && tmux source-file $HOME/.config/tmux/tmux.conf

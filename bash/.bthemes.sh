@@ -88,7 +88,7 @@ bash_theme() {
   013_16magenta
   008_16grey
   003_16darkyellow
-  007_16offwhit
+  007_16offwhite
   )
 
   # Set theme with theme=("${themename[@]}")

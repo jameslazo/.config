@@ -5,6 +5,8 @@ export CFB=$CF/bash
 export GOPATH=$HOME/go
 export XDG_PICTURES_DIR=$HOME/Pictures
 export GRIM_DEFAULT_DIR=$XDG_PICTURES_DIR/screenshots
+export HYPRSHOT_DIR=$GRIM_DEFAULT_DIR
+export SYSTEMD_LESS=FRXMK
 #export LC_ALL=en_US.UTF-8
 #export XDG_DATA_DIRS=/usr/local/share/:/usr/share/
 
@@ -34,6 +36,50 @@ alias wgd='wg-quick down wg1'
 alias wgu='wg-quick up wg1'
 
 #---FUNCTIONS---#
+gem_path() {
+  # set/validate directory
+  if [[ -z "$1" || "$1" == "." ]]; then
+    local dir="$(pwd)"
+  elif [[ -d $1 ]]; then
+    local dir="$1"
+  elif [[ "$1" == @(-h|--help) ]]; then
+    echo "usage: gem_path [PATH] [MODEL (3|pro|flash|flash-lite)]"
+    echo "PATH defaults to pwd, MODEL defaults to flash"
+    echo "PATH argument '.' uses pwd, MODEL arguments 'any' and '.' use gemini-cli logic to determine model use"
+    exit 1
+  else
+    echo "$1 is not a valid path"
+    exit 1
+  fi
+
+  # set gemini-cli model
+  local model=""
+  case $2 in
+    3)
+      local model="gemini-$2-pro-preview"
+      echo "using model $model" ;;
+    pro|flash|flash-lite)
+      local model="gemini-2.5-$2"
+      echo "using model $model" ;;
+    auto|.)
+      echo "auto model selection" ;;
+    *)
+      local model="gemini-2.5-flash" 
+      echo "defaulting to model $model" ;;
+  esac
+
+  # this is where the fun begins
+  echo "preparing gemini environment..."
+  [[ -f "$dir/GEMINI.md" ]] || cp ~/@/gemini/preamble.md $dir/GEMINI.md
+  [[ -f "$dir/.geminiignore" ]] || cp ~/@/gemini/.geminiignore $dir
+  cd ~/code/gemini
+  echo -e "$(cat API)\nPROJECT_PATH=$dir\nGEM_CONFIG=$HOME/.gemini" > .env
+  echo "bringing up container..."
+  docker compose up -d &> /dev/null
+  echo "all systems go, let's get this party started"
+  docker compose exec gemini gemini $([[ ! -z $model ]] && echo "-m $model") && cd $dir
+}
+
 nlog() {
   local log=$CODE/sandbox/log.md
   local today="# $(date '+%Y-%m-%d')"
@@ -123,7 +169,6 @@ export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:${INFOPATH:-}"
 
 #---THEMES---#
 . $CFB/.bthemes.sh
-#. $CF/wal/theme
 
 #---SECRETS---#
 . $HOME/secret/.secret.sh

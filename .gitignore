@@ -36,3 +36,4 @@
 *.bz2
 *.xz
 hypr/monitor.conf
+hypr/hypridle.conf

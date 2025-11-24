@@ -11,29 +11,215 @@ settings:
       normal:
         j: scroll-px 0 400
         k: scroll-px 0 -400
+  colors.completion.category.bg:
+    global: 'qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #001d1d, stop:1 #014040)'
+  colors.completion.category.border.bottom:
+    global: '#001d1d'
+  colors.completion.category.border.top:
+    global: '#001d1d'
+  colors.completion.category.fg:
+    global: '#ffd7af'
+  colors.completion.even.bg:
+    global: '#014040'
+  colors.completion.fg:
+    global:
+    - '#ffd7af'
+    - '#ffd7af'
+    - '#ffd7af'
+  colors.completion.item.selected.bg:
+    global: '#00afaf'
+  colors.completion.item.selected.border.bottom:
+    global: '#014040'
+  colors.completion.item.selected.border.top:
+    global: '#014040'
+  colors.completion.item.selected.fg:
+    global: '#001d1d'
+  colors.completion.item.selected.match.fg:
+    global: '#ffd7af'
+  colors.completion.match.fg:
+    global: '#ff5f00'
+  colors.completion.odd.bg:
+    global: '#001d1d'
+  colors.completion.scrollbar.bg:
+    global: '#001d1d'
+  colors.completion.scrollbar.fg:
+    global: '#ffd7af'
+  colors.contextmenu.disabled.bg:
+    global: null
+  colors.contextmenu.disabled.fg:
+    global: null
+  colors.contextmenu.menu.bg:
+    global: '#001d1d'
+  colors.contextmenu.menu.fg:
+    global: '#ffd7af'
+  colors.contextmenu.selected.fg:
+    global: null
+  colors.downloads.bar.bg:
+    global: '#001d1d'
+  colors.downloads.error.bg:
+    global: red
+  colors.downloads.error.fg:
+    global: '#ffd7af'
+  colors.downloads.start.bg:
+    global: '#0000aa'
+  colors.downloads.start.fg:
+    global: '#ffd7af'
+  colors.downloads.stop.bg:
+    global: '#00aa00'
+  colors.downloads.stop.fg:
+    global: '#ffd7af'
+  colors.hints.bg:
+    global: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 rgba(255, 247, 133, 0.8),
+      stop:1 rgba(255, 197, 66, 0.8))
+  colors.hints.fg:
+    global: '#001d1d'
+  colors.hints.match.fg:
+    global: '#014040'
+  colors.keyhint.bg:
+    global: rgba(0, 0, 0, 80%)
+  colors.keyhint.fg:
+    global: '#ffd7af'
+  colors.messages.error.border:
+    global: '#bb0000'
+  colors.messages.error.fg:
+    global: '#ffd7af'
+  colors.messages.info.bg:
+    global: '#001d1d'
+  colors.messages.info.border:
+    global: '#333333'
+  colors.messages.info.fg:
+    global: '#ffd7af'
+  colors.messages.warning.bg:
+    global: '#ff5f00'
+  colors.messages.warning.border:
+    global: '#d47300'
+  colors.messages.warning.fg:
+    global: '#001d1d'
+  colors.prompts.bg:
+    global: '#001d1d'
+  colors.prompts.border:
+    global: 1px solid gray
+  colors.prompts.fg:
+    global: '#ffd7af'
+  colors.prompts.selected.bg:
+    global: grey
+  colors.prompts.selected.fg:
+    global: '#ffd7af'
+  colors.statusbar.caret.bg:
+    global: purple
+  colors.statusbar.caret.fg:
+    global: '#ffd7af'
+  colors.statusbar.caret.selection.bg:
+    global: '#a12dff'
+  colors.statusbar.caret.selection.fg:
+    global: '#ffd7af'
+  colors.statusbar.command.bg:
+    global: '#001d1d'
+  colors.statusbar.command.fg:
+    global: '#ffd7af'
+  colors.statusbar.command.private.bg:
+    global: darkslategray
+  colors.statusbar.command.private.fg:
+    global: '#ffd7af'
+  colors.statusbar.insert.bg:
+    global: '#014040'
+  colors.statusbar.insert.fg:
+    global: '#ffd7af'
+  colors.statusbar.normal.bg:
+    global: '#001d1d'
+  colors.statusbar.normal.fg:
+    global: '#ffd7af'
+  colors.statusbar.passthrough.bg:
+    global: darkblue
+  colors.statusbar.passthrough.fg:
+    global: '#ffd7af'
+  colors.statusbar.private.bg:
+    global: '#666666'
+  colors.statusbar.private.fg:
+    global: '#ffd7af'
+  colors.statusbar.progress.bg:
+    global: '#ffd7af'
+  colors.statusbar.url.error.fg:
+    global: '#ff5f00'
+  colors.statusbar.url.fg:
+    global: '#ffd7af'
+  colors.statusbar.url.hover.fg:
+    global: aqua
+  colors.statusbar.url.success.http.fg:
+    global: '#ffd7af'
   colors.statusbar.url.success.https.fg:
-    global: orange
+    global: '#ff5f00'
+  colors.statusbar.url.warn.fg:
+    global: yellow
   colors.tabs.bar.bg:
-    global: black
+    global: '#001d1d'
+  colors.tabs.even.bg:
+    global: '#001d1d'
+  colors.tabs.even.fg:
+    global: '#ffd7af'
+  colors.tabs.indicator.error:
+    global: '#ff0000'
+  colors.tabs.indicator.start:
+    global: '#0000aa'
+  colors.tabs.indicator.stop:
+    global: '#00aa00'
+  colors.tabs.odd.bg:
+    global: '#014040'
+  colors.tabs.odd.fg:
+    global: '#ffd7af'
+  colors.tabs.pinned.even.bg:
+    global: darkseagreen
+  colors.tabs.pinned.even.fg:
+    global: '#ffd7af'
+  colors.tabs.pinned.odd.bg:
+    global: seagreen
+  colors.tabs.pinned.odd.fg:
+    global: '#ffd7af'
+  colors.tabs.pinned.selected.even.bg:
+    global: '#001d1d'
+  colors.tabs.pinned.selected.even.fg:
+    global: '#ffd7af'
+  colors.tabs.pinned.selected.odd.bg:
+    global: '#001d1d'
+  colors.tabs.pinned.selected.odd.fg:
+    global: '#ffd7af'
   colors.tabs.selected.even.bg:
-    global: darkorange
+    global: '#00afaf'
   colors.tabs.selected.even.fg:
-    global: white
+    global: '#014040'
   colors.tabs.selected.odd.bg:
-    global: darkorange
+    global: '#00afaf'
+  colors.tabs.selected.odd.fg:
+    global: '#014040'
+  colors.tooltip.bg:
+    global: '#001d1d'
+  colors.tooltip.fg:
+    global: '#ffd7af'
+  colors.webpage.bg:
+    global: '#ffd7af'
   colors.webpage.darkmode.algorithm:
     global: lightness-cielab
   colors.webpage.darkmode.enabled:
     global: true
   colors.webpage.preferred_color_scheme:
     global: dark
+  completion.shrink:
+    global: false
+  content.canvas_reading:
+    global: false
+  content.default_encoding:
+    global: utf-8
   content.geolocation:
     https://careers.caci.com: false
     https://www.dunkindonuts.com: false
+  content.headers.user_agent:
+    global: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML,
+      like Gecko) Version/17.10 Safari/605.1.1
   content.javascript.clipboard:
     https://docs.redhat.com: access-paste
     https://github.com: access-paste
     https://grafana.com: access-paste
+    https://hub.docker.com: access-paste
     https://wiki.hypr.land: access-paste
     https://www.talos.dev: access-paste
   content.javascript.enabled:
@@ -62,13 +248,62 @@ settings:
     '*://*.www.reddit.com/*': true
     '*://*.www.talos.dev/*': true
     global: false
+  content.pdfjs:
+    global: true
   downloads.location.prompt:
     global: false
   downloads.remove_finished:
     global: 1000
+  editor.command:
+    global:
+    - nvim
+    - -f
+    - '{file}'
+    - -c
+    - normal {line}G{column0}l
+  fonts.completion.entry:
+    global: default_size default_family
+  fonts.contextmenu:
+    global: Inter
+  fonts.debug_console:
+    global: default_size MononokiNFM-Regular
+  fonts.default_family:
+    global: audiowide
+  fonts.default_size:
+    global: 11pt
+  fonts.downloads:
+    global: default_size default_family
+  fonts.hints:
+    global: bold default_size default_family
+  fonts.messages.warning:
+    global: default_size default_family
+  fonts.prompts:
+    global: default_size Inter
+  fonts.web.family.cursive:
+    global: Lobster
+  fonts.web.family.fantasy:
+    global: HeavyData
+  fonts.web.family.fixed:
+    global: null
+  fonts.web.family.sans_serif:
+    global: null
+  hints.border:
+    global: '1px solid #E3BE23'
+  hints.chars:
+    global: asdvnjkl
+  hints.uppercase:
+    global: true
   history_gap_interval:
     global: 45
   tabs.position:
     global: left
   tabs.show:
     global: switching
+  tabs.show_switching_delay:
+    global: 600
+  tabs.title.format:
+    global: '{audio}{index}: {current_title}'
+  tabs.title.format_pinned:
+    global: '{index}'
+  tabs.undo_stack_size:
+    global: 10

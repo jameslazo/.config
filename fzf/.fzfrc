@@ -1,5 +1,6 @@
 --layout=reverse
---preview='cat {}'
+#--preview='bat -n --color=always {}'
+--preview='vim {}'
 --color=pointer:37
 --color=fg:223
 --color=prompt:223
