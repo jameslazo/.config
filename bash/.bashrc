@@ -4,21 +4,81 @@ case $- in
       *) return;;
 esac
 
-#---ENV VARS---#
-export EDITOR=$(which nvim)
-export FZF_ALT_C_OPTS="--walker-root=$HOME --walker-skip=.git --preview 'tree -C {}'"
-export FZF_DEFAULT_COMMAND='find . -type d \( -name .venv -o -name __pycache__ -o -name .git \) -prune -o -type f -print'
-export FZF_DEFAULT_OPTS_FILE=$HOME/.config/fzf/.fzfrc
-export KUBE_EDITOR=$EDITOR
-export KUBECONFIG=$HOME/.kube/kubeconfig
-export LANGUAGE=en_US.UTF-8
-export PKG_MGR="$(find /usr/bin -name pacman -o -name apt -o -name dnf)"
-export PKG_MGR_ALT="$(find /usr/bin -name yay -o -name yum -o -name snap -o -name brew)"
+#---XDG---#
 export XDG_DATA_HOME=$HOME/.local/share
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_STATE_HOME=$HOME/.local/state
 export XDG_CONFIG_DIRS=/etc/xdg
 export XDG_CACHE_HOME=$HOME/.cache
+
+#---CONFIG---#
+if [[ ! -d $XDG_CONFIG_HOME ]]; then
+  mkdir -p $XDG_CONFIG_HOME
+fi
+
+#---SOURCE---#
+if [[ ! -f $HOME/.bashrc || ! $(grep ".bashrc" $HOME/.bashrc) ]]; then
+  echo ". $(find $XDG_CONFIG_HOME $HOME -name .bashrc -print -quit)" >> $HOME/.bashrc
+fi
+
+#---PKG---#
+export PKG_MGR=$(command -v pacman || command -v apt || command -v dnf)
+export PKG_MGR_ALT=$(command -v yay || command -v yum || command -v snap || command -v brew)
+
+base_pkg_chk() {
+  # check for essential base packages 
+  # package list
+  local pkgs=(
+    "vim"
+    "tree"
+    "git"
+    "tmux"
+    "fzf"
+    "zip"
+    "unzip"
+    "dig"
+    "rsync"
+    "curl"
+  )
+
+  # check for sudo requirement
+  case $(whoami) in
+    root|u0_*)
+      local sutxt="" ;;
+    *)
+      local sutxt="sudo" ;;
+  esac
+
+  # set package install text
+  if [[ $(echo "$PKG_MGR") == *"pacman"* ]]; then
+    local install_cmd="$sutxt $PKG_MGR -S"
+  else
+    local install_cmd="$sutxt $PKG_MGR install"
+  fi
+
+  # define install conditions
+  lets_install() {
+    if ! $(command -v $1 &> /dev/null); then
+      $install_cmd $1
+    fi
+  }
+
+  # install package list as needed
+  for i in ${pkgs[@]}; do
+    lets_install $i
+  done
+}
+
+base_pkg_chk
+
+#---ENV VARS---#
+export EDITOR=$(command -v nvim || command -v vim)
+export FZF_ALT_C_OPTS="--walker-root=$HOME --walker-skip=.git --preview 'tree -C {}'"
+export FZF_DEFAULT_COMMAND='find . -type d \( -name .venv -o -name __pycache__ -o -name .git \) -prune -o -type f -print'
+export FZF_DEFAULT_OPTS_FILE=$XDG_CONFIG_HOME/fzf/.fzfrc
+export KUBE_EDITOR=$EDITOR
+export KUBECONFIG=$HOME/.kube/kubeconfig
+export LANGUAGE=en_US.UTF-8
 
 #---BASHRC FULL---#
 if [[ -f $HOME/.config/bash/.bashfull.sh ]]; then
@@ -34,9 +94,8 @@ shopt -s autocd
 
 #---ALIASES---#
 alias clear='TERMINFO=/usr/share/terminfo TERM=xterm /usr/bin/clear'
-alias dush='sudo du -h --max-depth=1'
+alias duh='du -h --max-depth=1'
 alias dust='dust -r'
-alias fzp='fzf --preview "cat {}"'
 alias ls='ls --color=auto'
 alias lS='ls -ShAlF'
 alias lx='ls -XhAlFr'
@@ -75,10 +134,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-#---CONFIG---#
-if [[ ! -d $HOME/.config ]]; then
-  mkdir -p $HOME/.config
-fi
 
 #---FUNCTIONS---#
 mkcd() {
@@ -176,9 +231,6 @@ upfzf() {
 }
 
 sb() {
-  if [[ ! -f $XDG_CONFIG_HOME/.bashrc ]]; then
-    ln -s $(find $XDG_CONFIG_HOME $HOME -name .bashrc -print -quit) $XDG_CONFIG_HOME/.bashrc
-  fi
   . $HOME/.config/.bashrc
   pgrep tmux &>/dev/null && tmux source-file $HOME/.config/tmux/tmux.conf
 }
