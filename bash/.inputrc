@@ -3,19 +3,30 @@ $include /etc/inputrc
 set colored-stats On
 set completion-ignore-case On
 set completion-prefix-display-length 3
-set mark-symlinked-directories On
+set skip-completed-text On
 set show-all-if-ambiguous On
 set show-all-if-unmodified On
 set visible-stats On
 set menu-complete-display-prefix On
+set page-completions On
 
 # next tab(s) will cycle through matches
 TAB: menu-complete
 # shift tab cycles backward
 "\e[Z": menu-complete-backward
 
-
-
+# custom bindings/commands
+"\e\177": backward-kill-word
+# "\e ": "\ef\t"
+"\eh": backward-word
+"\el": forward-word
+"\ej": next-screen-line
+"\ek": previous-screen-line
+"\eL": downcase-word
+"\eU": upcase-word
+"\eu": capitalize-word
+#"\eR": revert-line
+"\e,": copy-region-as-kill
 
 $if mode=emacs
 

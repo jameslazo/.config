@@ -1,36 +1,31 @@
 #---ENV VARS---#
 export CODE=$HOME/code
-export CF=$HOME/.config
+export CF=$XDG_CONFIG_HOME
 export CFB=$CF/bash
 export GOPATH=$HOME/go
 export XDG_PICTURES_DIR=$HOME/Pictures
 export GRIM_DEFAULT_DIR=$XDG_PICTURES_DIR/screenshots
 export HYPRSHOT_DIR=$GRIM_DEFAULT_DIR
 export SYSTEMD_LESS=FRXMK
-#export LC_ALL=en_US.UTF-8
-#export XDG_DATA_DIRS=/usr/local/share/:/usr/share/
+export PS2='<_< '
 
 #---IME---#
-#GTK_IM_MODULE=wayland
 GTK_IM_MODULE=fcitx
 QT_IM_MODULE=fcitx
-#QT_IM_MODULES="wayland;fcitx;ibus"
 XMODIFIERS=@im=fcitx
 
 #---ALIASES---#
 alias code='code --disable-telemetry'
-alias dt='cd ~/.config'
+alias dt='cd $CF'
 alias ff='fastfetch -l ~/Pictures/img/T480/t480.png --logo-recache'
 alias grurp='grim -g "$(slurp)"'
 alias hypx='hyprctl dispatch exit'
 alias hre='hyprctl reload'
 alias nb='$EDITOR $CFB/.bashrc'
 alias nbf='$EDITOR $CFB/.bashfull.sh'
+alias nbt='$EDITOR $CFB/.bthemes.sh'
 alias nh='$EDITOR $CF/hypr/hyprland.conf'
 alias nn='$EDITOR $CF/nvim/init.lua'
-#alias nvim='$EDITOR'
-alias ta='tmux attach -t $HOSTNAME &> /dev/null || tmux new -s $HOSTNAME'
-alias ts='date "+%y%m%d_%H%M%S"'
 alias vs='code tunnel --disable-telemetry'
 alias wgd='wg-quick down wg1'
 alias wgu='wg-quick up wg1'
@@ -38,25 +33,22 @@ alias wgu='wg-quick up wg1'
 #---FUNCTIONS---#
 gem_path() {
   # set/validate directory
-  if [[ -z "$1" || "$1" == "." ]]; then
-    local dir="$(pwd)"
-  elif [[ -d $1 ]]; then
-    local dir="$1"
+  local dir="${1:-$(pwd)}"
+  if [[ ! -d "$dir" ]]; then
+    echo "$1 is not a valid path"
+    exit 1
   elif [[ "$1" == @(-h|--help) ]]; then
     echo "usage: gem_path [PATH] [MODEL (3|pro|flash|flash-lite)]"
     echo "PATH defaults to pwd, MODEL defaults to flash"
-    echo "PATH argument '.' uses pwd, MODEL arguments 'any' and '.' use gemini-cli logic to determine model use"
-    exit 1
-  else
-    echo "$1 is not a valid path"
+    echo "PATH argument '.' uses pwd, MODEL arguments 'auto' and '.' use gemini-cli logic to determine model use"
     exit 1
   fi
 
   # set gemini-cli model
   local model=""
   case $2 in
-    3)
-      local model="gemini-$2-pro-preview"
+    pro-p|flash-p)
+      local model="gemini-3-${2}review"
       echo "using model $model" ;;
     pro|flash|flash-lite)
       local model="gemini-2.5-$2"
@@ -99,6 +91,40 @@ cbsub() {
     return 1
   fi
   wl-paste -n | sed "s|$1|$2|g" | wl-copy -n
+}
+
+reload() {
+  local proc="$1"
+  if [ -z "$proc" ]; then
+    local proc=$(ps aux | fzf --accept-nth 11 --no-preview)
+  fi
+  if command -v "$proc" 2&> /dev/null; then
+    local tpid=$(pidof $proc)
+    (pkill $proc &> /dev/null)
+    local timer=0
+    while [ ! -z $(pidof $proc) ]; do
+      sleep 1
+      ((timer++))
+      if [ $timer -eq 10 ]; then
+        echo "kill operation timed out"
+        break
+      fi
+    done
+    ($proc &> /dev/null &)
+    local timer=0
+    while [ -z $(pidof $proc) ]; do
+      sleep 1
+      ((timer++))
+      if [ $timer -eq 10 ]; then
+        echo "reload operation timed out"
+        break
+      fi
+    done
+    local rpid=$(pidof $proc)
+    echo -e "Terminated \e[38;5;214m$proc \e[38;5;223mwith pid \e[38;5;202m$tpid \e[38;5;223mand reloaded as pid \e[38;5;37m$rpid"
+  else
+    echo -e "\e[38;5;214m$proc \e[38;5;223mnot located in \$PATH\nexiting"
+  fi
 }
 
 fromhex() {
@@ -170,6 +196,9 @@ export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:${INFOPATH:-}"
 #---THEMES---#
 . $CFB/.bthemes.sh
 
-#---SECRETS---#
-. $HOME/secret/.secret.sh
+#---SECRET---#
+export SECRET=$HOME/secret
+[[ -d $SECRET ]] || mkdir $SECRET
+[[ -f $SECRET.secret.sh ]] || echo "# Bash secrets" > $SECRET/.secret.sh
+. $SECRET/.secret.sh
 

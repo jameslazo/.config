@@ -1,6 +1,6 @@
 --layout=reverse
-#--preview='bat -n --color=always {}'
---preview='cat {}'
+--preview='bat -n --color=always {}'
+#--preview='cat {}'
 --color=pointer:37
 --color=fg:223
 --color=prompt:223
@@ -12,5 +12,5 @@
 --color=hl:202
 --color=current-hl:37
 --multi
---walker-skip=.kube_bak,.kube,.mozilla,.cache,.fzf,.docker,.local,.talos
+--walker-skip=.kube_bak,.kube,.mozilla,.cache,.fzf,.docker,.local,.talos,.git,node_modules,.venv,__pycache__,.bak,img,Pictures,BraveSoftware,.terraform
 

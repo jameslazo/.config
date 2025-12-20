@@ -29,7 +29,7 @@ base_pkg_chk() {
   # check for essential base packages 
   # package list
   local pkgs=(
-    "vim"
+    "nvim"
     "tree"
     "git"
     "tmux"
@@ -39,6 +39,7 @@ base_pkg_chk() {
     "dig"
     "rsync"
     "curl"
+    "bat"
   )
 
   # check for sudo requirement
@@ -74,7 +75,7 @@ base_pkg_chk
 #---ENV VARS---#
 export EDITOR=$(command -v nvim || command -v vim)
 export FZF_ALT_C_OPTS="--walker-root=$HOME --walker-skip=.git --preview 'tree -C {}'"
-export FZF_DEFAULT_COMMAND='find . -type d \( -name .venv -o -name __pycache__ -o -name .git \) -prune -o -type f -print'
+export FZF_CTRL_R_OPTS="--no-preview"
 export FZF_DEFAULT_OPTS_FILE=$XDG_CONFIG_HOME/fzf/.fzfrc
 export KUBE_EDITOR=$EDITOR
 export KUBECONFIG=$HOME/.kube/kubeconfig
@@ -87,6 +88,11 @@ else
   echo "could not source full bash profile"
 fi
 
+#---INPUTRC---#
+if [[ ! -f $HOME/.inputrc && -f $XDG_CONFIG_HOME/bash/.inputrc ]]; then
+  ln -s $XDG_CONFIG_HOME/bash/.inputrc $HOME/.inputrc
+fi
+
 #---OPTIONS---#
 shopt -s checkwinsize
 shopt -s globstar
@@ -96,21 +102,24 @@ shopt -s autocd
 alias clear='TERMINFO=/usr/share/terminfo TERM=xterm /usr/bin/clear'
 alias duh='du -h --max-depth=1'
 alias dust='dust -r'
-alias ls='ls --color=auto'
-alias lS='ls -ShAlF'
-alias lx='ls -XhAlFr'
-alias lr='ls -hAlFR'
-alias lt='ls -thAlF'
-alias ltr='ls -thAlFr'
-alias ll='ls -hAlF'
+alias ls='ls -F --color=auto'
+alias lS='ls -ShAl'
+alias lx='ls -XhAlr'
+alias lr='ls -hAlR'
+alias lt='ls -thAl'
+alias ltr='ls -thAlr'
+alias ll='ls -hAl'
 alias la='ls -Ah'
-alias l='ls -CFh'
+alias l='ls -Ch'
 alias ta='tmux attach -t $HOSTNAME &> /dev/null || tmux new -s $HOSTNAME "btop" \; new-window \; split-window -h \;'
+alias td='tmux detach'
 alias ts='date "+%y%m%d_%H%M%S"'
 
 #---HISTORY---#
 #HISTCONTROL=ignoreboth
 shopt -s histappend
+shopt -s cdspell
+shopt -s no_empty_cmd_completion
 HISTSIZE=200000000
 HISTFILESIZE=200000000
 HISTFILE=$HOME/.bash_history
@@ -136,6 +145,33 @@ fi
 
 
 #---FUNCTIONS---#
+pd() {
+  if [[ -z "$1" ]]; then
+    local dirsp=$(dirs -p | tail -n +2 | fzf --height 10% --no-preview)
+    [[ -n "$dirsp" ]] && cd "${dirsp/#\~/$HOME}"
+  else
+    if dirs -p | grep -qx "$1"; then
+      cd "$1"
+    else
+      pushd "$1" > /dev/null
+    fi
+  fi
+}
+
+bm() {
+  # if [[ "$1" == '.' ]]; then
+  #   local symlink="$(pwd)"
+  # else
+  local symlink="${1:-$(pwd)}"
+  # fi
+  local dirname="${2:-$(basename $symlink)}"
+  if [[ ! -L ~/@/$dirname ]]; then
+    ln -s $symlink ~/@/$dirname
+  else
+    echo "~/@/$dirname already exists"
+  fi
+}
+
 mkcd() {
   if [[ -z $1 ]]; then
     echo "usage: mkcd PATH"
@@ -167,12 +203,12 @@ mvsubd() {
 newsh() {
   local sh_tmpl=$HOME/.config/sh/tmpl.sh
   local sh_name="${1:-tmpl.sh}"
-  cp $sh_tmpl "$1"
-  $EDITOR "$1"
+  cp $sh_tmpl "$sh_name"
+  $EDITOR "$sh_name"
 }
 
 extract() {
-  if [[ ! -f $1 ]]; then
+  if [[ ! -f "$1" ]]; then
     echo "'$1' does not exist."
     return 1
   fi
@@ -196,7 +232,7 @@ extract() {
 }
 
 gp() {
-  microk8s kubectl get pods -n $1
+  microk8s kubectl get pods -n "$1"
 }
 
 k8ex() {
