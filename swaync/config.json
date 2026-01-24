@@ -71,11 +71,11 @@
 
                 {
                     "label": "",
-                    "command": "kitty nmtui"
+                    "command": "kitty --title termwidget iwctl"
                 },
                 {
                     "label": "",
-                    "command": "blueman-manager"
+                    "command": "kitty --title termwidget bluetoothctl"
                 },
                 {
                     "label":"󰤄",
@@ -85,21 +85,21 @@
 
                 {
                     "label": "󰀟",
-                    "command": "gnome-network-displays"
+                    "command": "kitty nvim ~/.config/hypr/monitor.conf"
                 },
 
                 {
                     "label": "󰈙",
-                    "command": "kitty bash -i -c 'Docs'"
+                    "command": "kitty yazi '~/Documents'"
                 },
                 {
                     "label": "",
-                    "command": "kitty bash -i -c 'Settings'"
+                    "command": "kitty nvim ~/.config/swaync/config.json"
                     
                 },
                 {
                     "label": "",
-                    "command": "kitty bash -i -c 'btop'"
+                    "command": "kitty btop"
 
                 },
                 {

@@ -75,7 +75,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 --[[ Plugin Definitions ]]
--- local plugins = {
+local plugins = {
   -- Colorscheme
 --  { "ellisonleao/gruvbox.nvim", priority = 1000 , config = true },
 
@@ -111,39 +111,39 @@ vim.opt.rtp:prepend(lazypath)
 --  },
 
   -- Syntax Highlighting and More
-  -- {
-  --   "nvim-treesitter/nvim-treesitter",
-  --   build = ":TSUpdate", -- Crucial: runs :TSUpdate on install/update
-  --   config = function()
-  --     require("nvim-treesitter.configs").setup({
-  --       ensure_installed = {
-  --         "bash",
-  --         "json",
-  --         "lua",
-  --         "markdown",
-  --         "python",
-  --         "terraform",
-  --         "vim",
-  --         "yaml"
-  --         -- Add other languages as needed
-  --       },
-  --       highlight = {
-  --         enable = true,
-  --         -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-  --         -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-  --         -- Using this option may slow down your editor, and you may see some duplicate highlights.
-  --         -- Instead of true it can also be a list of languages
-  --         additional_vim_regex_highlighting = false,
-  --       },
-  --       indent = {
-  --         enable = true,
-  --       },
-  --       -- Autotag for HTML/XML, etc.
-  --       -- autotag = {
-  --       --   enable = true,
-  --       -- },
-  --     })
-  --     -- Optional: Check if parsers are installed and trigger install if not
+  {
+    "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate", -- Crucial: runs :TSUpdate on install/update
+    config = function()
+      require("nvim-treesitter.configs").setup({
+        ensure_installed = {
+          "bash",
+          "json",
+          "lua",
+          "markdown",
+          "python",
+          "terraform",
+          "vim",
+          "yaml"
+          -- Add other languages as needed
+        },
+        highlight = {
+          enable = true,
+          -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+          -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+          -- Using this option may slow down your editor, and you may see some duplicate highlights.
+          -- Instead of true it can also be a list of languages
+          additional_vim_regex_highlighting = false,
+        },
+        indent = {
+          enable = true,
+        },
+        -- Autotag for HTML/XML, etc.
+        -- autotag = {
+        --   enable = true,
+        -- },
+      })
+      -- Optional: Check if parsers are installed and trigger install if not
       -- This is usually handled by `build` and `ensure_installed`, but can be a fallback.
       -- local ensure_installed = require("nvim-treesitter.configs").get_ensure_installed_parsers()
       -- local parsers_to_install = {}
@@ -155,15 +155,15 @@ vim.opt.rtp:prepend(lazypath)
       -- if #parsers_to_install > 0 then
       --   vim.cmd("TSInstall " .. table.concat(parsers_to_install, " "))
       -- end
-    -- end
+    end
     -- Optional: Defer TSUpdate until after Neovim has fully started if build causes issues
     -- init = function()
     --   vim.defer_fn(function()
     --     pcall(vim.cmd, "TSUpdate")
     --   end, 100)
     -- end
---   }
--- }
+  }
+}
 
 --[[ Initialize Lazy.nvim ]]
 -- The second argument to setup can be a table for lazy.nvim's own options (e.g., UI, performance)

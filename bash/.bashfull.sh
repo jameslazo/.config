@@ -7,7 +7,7 @@ export XDG_PICTURES_DIR=$HOME/Pictures
 export GRIM_DEFAULT_DIR=$XDG_PICTURES_DIR/screenshots
 export HYPRSHOT_DIR=$GRIM_DEFAULT_DIR
 export SYSTEMD_LESS=FRXMK
-export PS2='<_< '
+export PS2='>_> '
 
 #---IME---#
 GTK_IM_MODULE=fcitx
@@ -26,6 +26,8 @@ alias nbf='$EDITOR $CFB/.bashfull.sh'
 alias nbt='$EDITOR $CFB/.bthemes.sh'
 alias nh='$EDITOR $CF/hypr/hyprland.conf'
 alias nn='$EDITOR $CF/nvim/init.lua'
+alias upyay='git clone https://aur.archlinux.org/yay.git /tmp/yay && cd /tmp/yay && makepkg -si && cd -'
+
 alias vs='code tunnel --disable-telemetry'
 alias wgd='wg-quick down wg1'
 alias wgu='wg-quick up wg1'
@@ -38,7 +40,7 @@ gem_path() {
     echo "$1 is not a valid path"
     exit 1
   elif [[ "$1" == @(-h|--help) ]]; then
-    echo "usage: gem_path [PATH] [MODEL (3|pro|flash|flash-lite)]"
+    echo "usage: gem_path [PATH] [MODEL (pro-p|flash-p|pro|flash|flash-lite)]"
     echo "PATH defaults to pwd, MODEL defaults to flash"
     echo "PATH argument '.' uses pwd, MODEL arguments 'auto' and '.' use gemini-cli logic to determine model use"
     exit 1
@@ -70,6 +72,13 @@ gem_path() {
   docker compose up -d &> /dev/null
   echo "all systems go, let's get this party started"
   docker compose exec gemini gemini $([[ ! -z $model ]] && echo "-m $model") && cd $dir
+}
+
+gifify() {
+  [[ -f "$1" ]] || echo "gifify requires an input file as an argument"
+  local gif_name="${1%%.mkv}.gif"
+  ffmpeg -i "$1" -r 24 "$gif_name" -y &> /dev/null
+  echo "generated '$gif_name'"
 }
 
 nlog() {
@@ -199,6 +208,6 @@ export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:${INFOPATH:-}"
 #---SECRET---#
 export SECRET=$HOME/secret
 [[ -d $SECRET ]] || mkdir $SECRET
-[[ -f $SECRET.secret.sh ]] || echo "# Bash secrets" > $SECRET/.secret.sh
+[[ -f $SECRET/.secret.sh ]] || echo "# Bash secrets" >> $SECRET/.secret.sh
 . $SECRET/.secret.sh
 

@@ -6,6 +6,15 @@
 
 config_version: 2
 settings:
+  aliases:
+    global:
+      q: close
+      qa: quit
+      w: session-save
+      wq: quit --save
+      wqa: quit --save
+  auto_save.interval:
+    global: 15000
   bindings.commands:
     global:
       normal:
@@ -216,6 +225,7 @@ settings:
     global: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML,
       like Gecko) Version/17.10 Safari/605.1.1
   content.javascript.clipboard:
+    https://docs.aws.amazon.com: access-paste
     https://docs.redhat.com: access-paste
     https://docs.siderolabs.com: access-paste
     https://duckduckgo.com: access-paste
@@ -225,6 +235,7 @@ settings:
     https://registry.terraform.io: access-paste
     https://wiki.hypr.land: access-paste
     https://www.talos.dev: access-paste
+    https://www.webiny.com: access-paste
   content.javascript.enabled:
     '*://*.archlinux.org/*': true
     '*://*.arxiv.org/*': true
@@ -266,28 +277,44 @@ settings:
     - '{file}'
     - -c
     - normal {line}G{column0}l
+  fonts.completion.category:
+    global: bold default_size audiowide
   fonts.completion.entry:
-    global: default_size default_family
+    global: default_size audiowide
   fonts.contextmenu:
-    global: Inter
+    global: default_size default_family
   fonts.debug_console:
-    global: default_size MononokiNFM-Regular
+    global: default_size
   fonts.default_family:
-    global: audiowide
+    global: null
   fonts.default_size:
     global: 11pt
   fonts.downloads:
     global: default_size default_family
   fonts.hints:
-    global: bold default_size default_family
+    global: bold default_size audiowide
+  fonts.keyhint:
+    global: default_size audiowide
+  fonts.messages.error:
+    global: default_size audiowide
+  fonts.messages.info:
+    global: default_size audiowide
   fonts.messages.warning:
-    global: default_size default_family
+    global: default_size audiowide
   fonts.prompts:
-    global: default_size Inter
+    global: default_size audiowide
+  fonts.statusbar:
+    global: default_size audiowide
+  fonts.tabs.selected:
+    global: default_size audiowide
+  fonts.tabs.unselected:
+    global: default_size audiowide
+  fonts.tooltip:
+    global: 'default_size '
   fonts.web.family.cursive:
-    global: Lobster
+    global: null
   fonts.web.family.fantasy:
-    global: HeavyData
+    global: null
   fonts.web.family.fixed:
     global: null
   fonts.web.family.sans_serif:

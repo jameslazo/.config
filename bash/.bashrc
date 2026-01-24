@@ -103,6 +103,8 @@ alias clear='TERMINFO=/usr/share/terminfo TERM=xterm /usr/bin/clear'
 alias duh='du -h --max-depth=1'
 alias dust='dust -r'
 alias ls='ls -F --color=auto'
+alias ld='ls -d */'
+alias lsd='ls -d */**/'
 alias lS='ls -ShAl'
 alias lx='ls -XhAlr'
 alias lr='ls -hAlR'
@@ -145,6 +147,24 @@ fi
 
 
 #---FUNCTIONS---#
+_dir_auto_complete() {
+local cur="${COMP_WORDS[COMP_CWORD]}"
+  # 1. Clear previous replies
+  COMPREPLY=()
+
+  # 2. Use readarray to handle spaces
+  # -t removes trailing newlines
+  # compgen -S "/" adds a trailing slash to directories
+  readarray -t COMPREPLY < <(compgen -d -S "/" -- "$cur")
+
+  # 3. Fix quoting: If the directory has a space, 
+  # Bash needs to escape it (e.g., My\ Photos)
+  if [[ ${#COMPREPLY[@]} -eq 1 ]]; then
+    # This part helps with auto-escaping when there's only one match
+    printf -v COMPREPLY[0] '%q' "${COMPREPLY[0]}"
+  fi
+}
+
 pd() {
   if [[ -z "$1" ]]; then
     local dirsp=$(dirs -p | tail -n +2 | fzf --height 10% --no-preview)
@@ -159,11 +179,7 @@ pd() {
 }
 
 bm() {
-  # if [[ "$1" == '.' ]]; then
-  #   local symlink="$(pwd)"
-  # else
   local symlink="${1:-$(pwd)}"
-  # fi
   local dirname="${2:-$(basename $symlink)}"
   if [[ ! -L ~/@/$dirname ]]; then
     ln -s $symlink ~/@/$dirname
@@ -199,6 +215,8 @@ mvsubd() {
   mkdir -p "$subd"
   mv $(ls -A | grep -v "$subd") "$subd" || echo "empty directory"
 }
+
+complete -F _dir_auto_complete -o nospace mvsubd
 
 newsh() {
   local sh_tmpl=$HOME/.config/sh/tmpl.sh
