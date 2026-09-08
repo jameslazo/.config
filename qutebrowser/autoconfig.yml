@@ -232,6 +232,7 @@ settings:
     https://github.com: access-paste
     https://grafana.com: access-paste
     https://hub.docker.com: access-paste
+    https://ollama.com: access-paste
     https://registry.terraform.io: access-paste
     https://wiki.hypr.land: access-paste
     https://www.talos.dev: access-paste
